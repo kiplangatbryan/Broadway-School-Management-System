@@ -1,10 +1,12 @@
 <?php include(APPPATH.'Views/templates/side-nav.php'); ?>
 
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-4">Team</h3>
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h4 class="text-dark mb-0">Teacher Panel</h4><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="/create/teacher"><i class="fas fa-user-tie fa-sm text-white-50"></i>&nbsp; &nbsp;New Teacher</a>
+                    </div>
                     <div class="card shadow">
                         <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">Employee Info</p>
+                            <p class="text-primary m-0 fw-bold">Employee Information</p>
                         </div>
                         <div class="card-body">
                             <div class="row">

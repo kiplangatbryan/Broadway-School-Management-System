@@ -9,15 +9,23 @@
                     <div class="card-body p-0">
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-flex">
-                                <div class="flex-grow-1 bg-login-image" style="background-image: url(&quot;assets/img/dogs/image3.jpeg&quot;);"></div>
+                                <div class="flex-grow-1 bg-login-image" style="background-image: url(<?php echo base_url() ?>/assets/img/dogs/image3.jpeg);"></div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
+                                    <?php 
+                                        if ($login_type == 'student'){
+                                            echo "<div class='my-3 alert alert-info  small'>To Access the system for the first time, use your <u>Parent Email or admission No as Username</u> and <u>admission Number as your password</u> for your account </div>";
+                                        }
+                                        if($login_type == 'teacher'){
+                                        echo "<div class='my-3 alert alert-info  small'>To Access the system for the first time, use your <u> Email </u> and <u> `teacher` as your password</u> for your account </div>";
+                                        }
+                                    ?>
                                     <div class="text-center">
                                         <h4 class="text-dark mb-4">Welcome Back!</h4>
                                         <?php if ($errors) echo "<div class='my-3 text-danger small'>Please Enter Correct Email or Password</div>" ?>
                                     </div>
-                                    <form class="user" method='post', action='/login'>
+                                    <form class="user" method='post', action='/login/<?php echo $login_type; ?>'>
                                       <?= csrf_field() ?>
                                         <div class="mb-3">
                                             <input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email">
@@ -30,11 +38,10 @@
                                                 <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
                                             </div>
                                         </div><button class="btn btn-primary d-block btn-user w-100" type="submit">Login</button>
-                                        <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Login with Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Login with Facebook</a>
+
                                         <hr>
                                     </form>
                                     <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div>
-                                    <div class="text-center"><a class="small" href="register.html">Create an Account!</a></div>
                                 </div>
                             </div>
                         </div>

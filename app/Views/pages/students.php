@@ -6,7 +6,7 @@
                     </div>
                     <div class="card shadow">
                         <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">Students Info</p>
+                            <p class="text-primary m-0 fw-bold">Students Information</p>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -22,21 +22,26 @@
                                     <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
                                 </div>
                             </div>
-                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <div class="table-responsive table-dark table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                                 <table class="table my-0" id="dataTable">
                                     <thead>
                                         <tr>  
+                                            <th>No.</th>             
                                             <th>Name(s)</th>             
                                             <th>Reg No</th>   
-                                            <th>Class</th>             
-                                            <th>Sex</th>             
-                                            <th>Birthday</th>             
+                                            <th>Class</th> 
+                                            <th>Gender</th>             
+                                            <th>Status</th>             
+                                            <th>Start_Date</th>  
+                                            <th>Actions</th>             
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($all_students as $student): ?>
+                                        <?php foreach ($all_students as $key => $student): ?>
                                             <tr>
                                                 <a href="<?php echo base_url() ?>/students/<?php echo $student['student_id'] ?>">
+                                                    <td><?php echo $key + 1 ?></td>
                                                     <td><img class="rounded-circle me-2" width="30" height="30" src="<?php echo base_url() ?>/assets/img/avatars/avatar1.jpeg">
                                                         <?php echo $student['name'] ?>
                                                     </td>
@@ -44,6 +49,13 @@
                                                     <td><?php echo $student['class_id'] ?></td>
                                                     <td><?php echo $student['sex'] ?></td>
                                                     <td><?php echo $student['birthday'] ?></td>
+                                                    <td><?php echo 'null' ?></td>
+
+                                                    <td>
+                                                        <a class="btn btn-warning btn-sm d-block"  role="button" href="<?php echo base_url().'/admin/teacher/profile/'.$student["student_id"] ?>">
+                                                            <i class="fas fa-eye fa-sm text-white-50"></i>&nbsp; &nbsp;View
+                                                        </a>
+                                                    </td>
 
                                                 </a>
                                               </tr>

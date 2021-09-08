@@ -1,4 +1,4 @@
-<?php include(APPPATH.'Views/templates/side-nav.php'); ?>
+<?php include(APPPATH.'Views/templates/student_nav.php'); ?>
                 
 
 <div class="container-fluid">
@@ -11,22 +11,8 @@
                 <div class="card-body">
                     <div class="row align-items-center no-gutters">
                         <div class="col me-2">
-                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>STUDENTS</span></div>
-                            <div class="text-dark fw-bold h5 mb-0"><span><?= esc($num_students) ?></span></div>
-                        </div>
-                        <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-          <div class="col-md-6 col-xl-3 mb-4">
-            <div class="card shadow border-start-primary py-2">
-                <div class="card-body">
-                    <div class="row align-items-center no-gutters">
-                        <div class="col me-2">
-                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>CLASSES</span></div>
-                            <div class="text-dark fw-bold h5 mb-0"><span><?= esc($num_students) ?></span></div>
+                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>CURRENT CLASS</span></div>
+                            <div class="text-dark fw-bold h5 mb-0"><span>FORM 3</span></div>
                         </div>
                         <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                     </div>
@@ -39,22 +25,8 @@
                 <div class="card-body">
                     <div class="row align-items-center no-gutters">
                         <div class="col me-2">
-                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>TEACHERS</span></div>
-                            <div class="text-dark fw-bold h5 mb-0"><span><?= esc($num_teachers) ?></span></div>
-                        </div>
-                        <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6 col-xl-3 mb-4">
-            <div class="card shadow border-start-primary py-2">
-                <div class="card-body">
-                    <div class="row align-items-center no-gutters">
-                        <div class="col me-2">
                             <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>SUBJECTS</span></div>
-                            <div class="text-dark fw-bold h5 mb-0"><span><?= esc($num_subjects) ?></span></div>
+                            <div class="text-dark fw-bold h5 mb-0"><span><?= esc($num_students) ?></span></div>
                         </div>
                         <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                     </div>
@@ -67,7 +39,7 @@
                 <div class="card-body">
                     <div class="row align-items-center no-gutters">
                         <div class="col me-2">
-                            <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>DEVELOPMENT</span></div>
+                            <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>FEE PERCENTAGE</span></div>
                             <div class="row g-0 align-items-center">
                                 <div class="col-auto">
                                     <div class="text-dark fw-bold h5 mb-0 me-3"><span>50%</span></div>
@@ -89,8 +61,8 @@
                 <div class="card-body">
                     <div class="row align-items-center no-gutters">
                         <div class="col me-2">
-                            <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>RECENT PERFOMANCE</span></div>
-                            <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                            <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>ROLE</span></div>
+                            <div class="text-dark fw-bold h5 mb-0"><span>Regular</span></div>
                         </div>
                         <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
                     </div>
@@ -102,7 +74,7 @@
         <div class="col-lg-7 col-xl-8">
             <div class="card shadow mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h6 class="text-primary fw-bold m-0">Overall Perfomance Overview</h6>
+                    <h6 class="text-primary fw-bold m-0">Earnings Overview</h6>
                     <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
                         <div class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
                             <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" href="#">&nbsp;Action</a><a class="dropdown-item" href="#">&nbsp;Another action</a>

@@ -22,19 +22,19 @@
 
 <body id="page-top">
     <div id="wrapper">
-        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+        <nav class="navbar navbar-dark align-items-start sidebar  sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
                     <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
                     <div class="sidebar-brand-text mx-3"><span><br>BroadWay<br>SMS<br></span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link <?php if($path === 'dashboard') echo 'active' ?>" href="/dashboard"><i class="fas fa-tachometer-alt"></i><span>&nbsp;Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link <?php if($path === 'events') echo 'active' ?>" href="/dashboard/events"><i class="fa fa-calendar"></i><span>&nbsp;Events</span></a></li>
-                    <li class="nav-item"><a class="nav-link <?php if($path === 'students') echo 'active' ?>" href="/dashboard/students"><i class="fa fa-users"></i><span>&nbsp;Students</span></a>
-                    <li class="nav-item"><a class="nav-link <?php if($path === 'teacher') echo 'active' ?>" href="/dashboard/teacher"><i class="fas fa-user-tie"></i>&nbsp;Teacher Staff</a></li>
-                    <li class="nav-item"><a class="nav-link <?php if($path === 'fee_structure') echo 'active' ?>" href="/dashboard/fee_structure"><i class="fas fa-dollar-sign"></i><span>&nbsp; &nbsp;Fee Structure</span></a></li>
-                    <li class="nav-item"><a class="nav-link <?php if($path === 'profile') echo 'active' ?>" href="/dashboard/profile"><i class="fas fa-user"></i><span>&nbsp; Profile</span></a></li>
+                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/dashboard') echo 'active' ?>" href="/admin/dashboard"><i class="fas fa-tachometer-alt"></i><span>&nbsp;Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/events') echo 'active' ?>" href="/admin/events"><i class="fa fa-calendar"></i><span>&nbsp;Events</span></a></li>
+                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/students') echo 'active' ?>" href="/admin/students"><i class="fa fa-users"></i><span>&nbsp;Students ME</span></a>
+                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/teacher') echo 'active' ?>" href="/admin/teacher"><i class="fas fa-user-tie"></i>&nbsp;Teachers ME</a></li>
+                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/fee_structure') echo 'active' ?>" href="/admin/fee_structure"><i class="fas fa-dollar-sign"></i><span>&nbsp; &nbsp;Fee Structure</span></a></li>
+                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/profile') echo 'active' ?>" href="/admin/profile"><i class="fas fa-user"></i><span>&nbsp; Profile</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/login/deauth"><i class="fa fa-sign-out"></i><span>&nbsp;Log out</span></a></li>
 
                 </ul>

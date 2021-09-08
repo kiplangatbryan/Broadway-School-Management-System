@@ -4,7 +4,7 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 
-class Student extends Model
+class Learner extends Model
 {
     // ...
     protected $table      = 'student';
@@ -12,13 +12,7 @@ class Student extends Model
     protected $protectedFields = ['password', 'authentication_key'];
     protected $returnType     = 'array';
 
-    protected $allowedFields = ['student_id', 
-                                'name', 
-                                'email', 
-                                'blood_group',
-                                'address',
-                                'birthday',
-                                'parent_phone',
+    protected $allowedFields = ['student_id',  'name',  'email', 'blood_group','address','birthday', 'parent_phone',
                                 'parent_email',
                                 'father_name',
                                 'mother_name',
@@ -29,17 +23,16 @@ class Student extends Model
     protected $validationMessages = [];
     protected $skipValidation     = false;
 
-     protected $DBGroup = 'default';
+    protected $DBGroup = 'default';
 
-     public function get_total_students(){
-         return count($this->findAll());
-     }
-
+  
     public function get_students(){
          return $this->findAll();
      }
 
-
+    public function get_data($email){
+        return $this->where('parent_email', $email)->first();
+     }
       
 
 
