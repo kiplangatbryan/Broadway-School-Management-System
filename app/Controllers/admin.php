@@ -16,6 +16,8 @@ class Admin extends Controller
         if (!isset($session->get('user_data')['admin_login']))
             return $this->response->redirect(base_url() . '/login'); 
     }
+
+    
     public  function dashboard()
     {   
        
@@ -42,22 +44,40 @@ class Admin extends Controller
             throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
         }
         $student_model = new Learner();
+        $teacher_model = new Teacher();
+
         $page_data['path'] = $this->request->getPath();
         $page_data['all_students'] = $page == 'students' ? $student_model->get_students(): "";
+        $page_data['all_teachers'] = $page == 'teachers' ? $teacher_model->get_teachers(): "";
+
 
         $this->check_session();
 
         return view('pages/'.$page, $page_data);
     }
-    public function display($view , $reg_no){
+    public function display($view , $id){
         // search for reg_no
        if ($view === 'student' || $view === 'teacher'){
-            $page_data['student_id'] = $reg_no;
+            // $page_data['student_id'] = $id;
             $page_data['path'] = $this->request->getPath();
-            
-            $this->check_session();
 
-            return view('pages/student_profile.php', $page_data);
+            if ($view === 'student'){
+                $student_model = new Learner();
+                $page_data['profile'] = $student_model->where('student_id', $id)->first();
+                $page_data['view_page'] = 'student_profile'; 
+            }
+            else{
+                $teacher_model = new Teacher();
+                $page_data['profile'] = $teacher_model->where('teacher_id', $id)->first();
+                $page_data['view_page'] = 'teacher_profile'; 
+            }
+
+            $subject_model =  new Subject();
+            $page_data['all_subjects'] = $subject_model->get_subjects();
+            
+             $this->check_session();
+
+            return view('pages/'.$page_data['view_page'].'.php', $page_data);
        }
        else {
             // Whoops, we don't have a page for that!

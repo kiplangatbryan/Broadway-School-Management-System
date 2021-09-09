@@ -74,7 +74,7 @@ INSERT INTO `subject` VALUES (1,'Mathematics'),(2,'Calculus'),(3,'Computer Scien
 
 DROP TABLE IF EXISTS `teacher`;
 CREATE TABLE `teacher` (
-  `teacher_id` int(11) NOT NULL,
+  `teacher_id` VARCHAR(11) NOT NULL,
   `name` longtext COLLATE utf8_unicode_ci NOT NULL,
   `birthday` longtext COLLATE utf8_unicode_ci NOT NULL,
   `sex` longtext COLLATE utf8_unicode_ci NOT NULL,
@@ -94,6 +94,6 @@ CREATE TABLE `teacher` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `teacher` VALUES 
-(1,'Tom Connolly','06/03/1976','male','','', '','','694 Michael Street','713-732-6331','TomConnolly@teachers.com','','', '', '', ''),
-(2,'Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','AlfieGibbs@gmail..com','','', '', '', '');
+('PERT8eoZgLa','Tom Connolly','06/03/1976','male','','', '','','694 Michael Street','713-732-6331','TomConnolly@teachers.com','','', '', '', ''),
+('KtxNG271SP5','Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','AlfieGibbs@gmail..com','','', '', '', '');
 

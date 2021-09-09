@@ -13,7 +13,7 @@ class Teacher extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['firstname', 'lastname', 'email', 'message'];
+    protected $allowedFields = ['class_id', 'name', 'teacher_id', 'prefect_id'];
 
     protected $useTimestamps = false;
     protected $createdField  = 'created_at';

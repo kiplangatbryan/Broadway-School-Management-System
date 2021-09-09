@@ -12,12 +12,7 @@ class Learner extends Model
     protected $protectedFields = ['password', 'authentication_key'];
     protected $returnType     = 'array';
 
-    protected $allowedFields = ['student_id',  'name',  'email', 'blood_group','address','birthday', 'parent_phone',
-                                'parent_email',
-                                'father_name',
-                                'mother_name',
-                                'religion'
-                                ];
+    protected $allowedFields = ['student_id','name','birthday','sex','religion','blood_group','address', 'parent_phone','parent_email','address', 'parent_phone','parent_email','father_name','mother_name','class_id', 'role', 'profileUrl'];
 
     protected $validationRules    = [];
     protected $validationMessages = [];
@@ -29,6 +24,9 @@ class Learner extends Model
     public function get_students(){
          return $this->findAll();
      }
+    public function check_id($id){
+           return $this->where('student_id', $id)->first();
+    } 
 
     public function get_data($email){
         return $this->where('parent_email', $email)->first();

@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/fullcalender/main.css">
+    <script src="<?php echo base_url(); ?>/assets/fullcalender/main.js"></script>
+
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/styles.min.css">
 </head>
 
@@ -32,7 +35,7 @@
                     <li class="nav-item"><a class="nav-link <?php if($path === 'admin/dashboard') echo 'active' ?>" href="/admin/dashboard"><i class="fas fa-tachometer-alt"></i><span>&nbsp;Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link <?php if($path === 'admin/events') echo 'active' ?>" href="/admin/events"><i class="fa fa-calendar"></i><span>&nbsp;Events</span></a></li>
                     <li class="nav-item"><a class="nav-link <?php if($path === 'admin/students') echo 'active' ?>" href="/admin/students"><i class="fa fa-users"></i><span>&nbsp;Students ME</span></a>
-                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/teacher') echo 'active' ?>" href="/admin/teacher"><i class="fas fa-user-tie"></i>&nbsp;Teachers ME</a></li>
+                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/teachers') echo 'active' ?>" href="/admin/teachers"><i class="fas fa-user-tie"></i>&nbsp;Teachers ME</a></li>
                     <li class="nav-item"><a class="nav-link <?php if($path === 'admin/fee_structure') echo 'active' ?>" href="/admin/fee_structure"><i class="fas fa-dollar-sign"></i><span>&nbsp; &nbsp;Fee Structure</span></a></li>
                     <li class="nav-item"><a class="nav-link <?php if($path === 'admin/profile') echo 'active' ?>" href="/admin/profile"><i class="fas fa-user"></i><span>&nbsp; Profile</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/login/deauth"><i class="fa fa-sign-out"></i><span>&nbsp;Log out</span></a></li>

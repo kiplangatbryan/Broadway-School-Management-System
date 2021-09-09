@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
@@ -7,50 +6,97 @@ use App\Models\Learner;
 use App\Models\Subject;
 use App\Models\Teacher;
 
+use Hidehalo\Nanoid\Client;
+use Hidehalo\Nanoid\GeneratorInterface;
 
 
 class Create extends Controller
 {   
     private $validationRules = [
-        'email' => ['label' => 'email', 'rules' => 'required|valid_email'],
-        'password' => ['label' => 'password', 'rules' => 'required|min_length[3]']
+        // 'parent_email' => ['label' => 'Parent email', 'rules' => 'valid_email'],
+        'student_id' => ['label' => 'Registration No', 'rules' => 'required'],
+        'class_id' => ['label' => 'class', 'rules' => 'required|max_length[3]'],
+        'sex' => ['label' => 'Gender', 'rules' => 'required'],
+        'full_name' => ['label' => 'Name', 'rules' => 'required'],
+        'birthday' => ['label' => 'birthday', 'rules' => 'required|valid_date'],
+        'parent_phone' => ['label' => 'Parent Phone', 'rules' => 'required|min_length[9]'],
+        'address' => ['label' => 'address', 'rules' => 'required'],
     ];
     private $teacherValidation = [
         'email' => ['label' => 'email', 'rules' => 'required|valid_email'],
-        'password' => ['label' => 'password', 'rules' => 'required|min_length[3]']
+        'sex' => ['label' => 'sex', 'rules' => 'required'],
+        'full_name' => ['label' => 'Name', 'rules' => 'required'],
+        'birthday' => ['label' => 'birthday', 'rules' => 'required|valid_date'],
+        'phone_number' => ['label' => 'phone_number', 'rules' => 'required|min_length[9]'],
+        'address' => ['label' => 'address', 'rules' => 'required'],
     ];
+
+    public function generateID(){
+        // check if an id is present else generate a new one
+        $client = new Client();
+        # more safer random generator
+        $nanoID =  $client->generateId($size = 11, $mode = Client::MODE_DYNAMIC);
+        $teacher_model = new Teacher();
+         $result = $teacher_model->check_data($nanoID);
+
+        if ($result == null ){
+            return $this->generateID();
+        }
+      
+        return $nanoID;
+    }
+
     public function check_session(){
         // check valid session
         $session = session();
-        if (!isset($session->get('user_data')['student_login']))
+        if (!isset($session->get('user_data')['admin_login']))
             return $this->response->redirect(base_url() . '/login'); 
+    }
+
+    public function check_valid_reg(){
+        $student_model = new Learner();
+        $result = $student_model->check_id($this->request->getPost('student_id'));
+
+        
+        if (isset($result)){
+            return 1;
+        }
+        return 0;
     }
 
     public function student(){
         $page_data['path'] = $this->request->getPath();
 
         $student_model = new Learner();
-        if ($this->request->getMethod() == 'post'){
+        if ($this->request->getMethod() == 'post' && $this->validate($this->validationRules)){ 
             
+            if($this->check_valid_reg() === 1)
+                return $this->response->redirect(base_url().'/create/student?result=failed&_id='.$this->request->getPost('student_id'));
             $this->check_session();
+            
 
             $student_model->save([
             'student_id' => $this->request->getPost('student_id'),
             'class_id'  => $this->request->getPost('class_id'),
             'sex' =>  $this->request->getPost('sex'),
-            'fathers_name' => $this->request->getPost('fathers_name'),
-            'mothers_name' => $this->request->getPost('mothers_name'),
+            'father_name' => $this->request->getPost('fathers_name'),
+            'mother_name' => $this->request->getPost('mothers_name'),
             'parent_phone' => $this->request->getPost('parent_phone'),
-            'name' => $this->request->getPost('first_name').' '.$this->request->getPost('last_name'),
+            'name' => $this->request->getPost('full_name'),
             'parent_email' =>  $this->request->getPost('email'),
             'address' => $this->request->getPost('address'),
             'blood_group' => $this->request->getPost('blood_group'),
-            'religion' => 'christianity',
-            'birthday' => '2019-01-10Z',
+            'religion' => $this->request->getPost('religion'),
+            'birthday' => $this->request->getPost('birthday'),
         ]);
         return $this->response->redirect(base_url().'/create/student?result=success&_id='.$this->request->getPost('student_id'));
 
         }
+
+        if( $this->validator == null)
+            $page_data['errors'] = '';
+        else
+            $page_data['errors'] = $this->validator->getErrors();
         
         $this->check_session();
 
@@ -60,26 +106,36 @@ class Create extends Controller
     public function teacher(){
         $page_data['path'] = $this->request->getPath();
 
-        $teacher_model = new Teacher();
-        if ($this->request->getMethod() == 'post'){
-            $this->check_session();
+        if ($this->request->getMethod() == 'post' && $this->validate($this->teacherValidation)){
+            $teacher_model = new Teacher();
 
-            $student_model->save([
-            // 'student_id' => $this->request->getPost('student_id'),
+            $this->check_session();
+            $customId = $this->generateID();
+
+            $teacher_model->save([
+            'teacher_id' => $customId,
             'sex' =>  $this->request->getPost('sex'),   
             'phone_number' => $this->request->getPost('phone_number'),
-            'name' => $this->request->getPost('first_name').' '.$this->request->getPost('last_name'),
+            'name' => $this->request->getPost('full_name'),
             'email' =>  $this->request->getPost('email'),
             'address' => $this->request->getPost('address'),
             'blood_group' => $this->request->getPost('blood_group'),
             'country' => $this->request->getPost('country'),
             'county' => $this->request->getPost('county'),
+            'religion' => $this->request->getPost('religion'),
+            'birthday' => $this->request->getPost('birthday'),
         ]);
-        return $this->response->redirect(base_url().'/create/teacher?result=success&_id='.$this->request->getPost('email'));
+        return $this->response->redirect(base_url().'/create/teacher?result=success&_id='.$customId);
 
         }
         $subject_model =  new Subject();
         $page_data['all_subjects'] = $subject_model->get_subjects();
+
+        if( $this->validator == null)
+            $page_data['errors'] = '';
+        else
+            $page_data['errors'] = $this->validator->getErrors();
+
         $this->check_session();
 
         return view('/pages/create_teacher', $page_data);

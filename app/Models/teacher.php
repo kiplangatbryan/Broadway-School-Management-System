@@ -8,14 +8,14 @@ class Teacher extends Model
 {
     // ...
     protected $table      = 'teacher';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'teacher_id';
 
     // protected $useAutoIncrement = true;
 
     protected $returnType     = 'array';
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['firstname', 'lastname', 'email', 'message'];
+    protected $allowedFields = ['teacher_id', 'name', 'birthday','sex' , 'religion', 'profileUrl','blood_group','role', 'address' , 'phone', 'email', 'country', 'county','subjects'];
 
     // protected $useTimestamps = false;
     // protected $createdField  = 'created_at';
@@ -31,6 +31,11 @@ class Teacher extends Model
     public function get_data($email){
         return $this->where('email', $email)->first();
     }
+
+    public function check_data($cpy){
+        return $this->find($cpy);
+    }
+
     public function get_teachers(){
          return $this->findAll();
     }

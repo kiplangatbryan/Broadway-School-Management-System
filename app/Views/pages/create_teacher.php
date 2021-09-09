@@ -4,9 +4,14 @@
     <h4 class="text-dark mb-4">Create Teacher Profile</h4>
     <?php
 
-        if (isset($_GET['_id'])){
+        if (isset($_GET['result']) && $_GET['result'] === 'success' && isset($_GET['_id'])){
             echo '<div class="alert alert-success d-sm-flex justify-content-between align-items-center mb-4">';
-            echo  '<div class="">Teacher profile created successfully!</div><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href='.base_url()."/dashboard/teacher/profile/".$_GET["_id"].'><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;View profile</a>';
+            echo  '<div class="">Teacher profile added successfully!</div><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href='.base_url().'/admin/teacher/profile/'.$_GET["_id"].'><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;View profile</a>';
+            echo '</div>';
+        }
+        if (isset($_GET['result']) && $_GET['result'] === 'failed' && isset($_GET['_id'])){
+            echo '<div class="alert alert-success d-sm-flex justify-content-between align-items-center mb-4">';
+            echo  '<div class="">Teacher already added to system you can check profile  </div><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href='.base_url().'/admin/teacher/profile/'.$_GET["_id"].'><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;View profile</a>';
             echo '</div>';
         }
     
@@ -22,6 +27,16 @@
         <div class="col-lg-8">
             <form method='post' action='/create/teacher'>
                 <?= csrf_field() ?>
+
+                   <?php if ($errors !== '') {
+                        echo "<div class='alert alert-danger'>";
+                            foreach($errors as $key => $error){
+                                print_r($error);
+                            }
+                        echo "</div>";
+                    }
+
+                    ?>
                 <div class="row">
                     <div class="col">
                         <div class="card shadow mb-3">
@@ -33,10 +48,7 @@
                             
                                 <div class="row">
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" id="first_name" placeholder="John" name="first_name"></div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" id="last_name" placeholder="Doe" name="last_name"></div>
+                                        <div class="mb-3"><label class="form-label" for="full_name"><strong>Full Name</strong></label><input class="form-control" type="text" id="full_name" placeholder="" name="full_name"></div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -66,12 +78,27 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="phone_number"><strong>Phone Number</strong></label><input class="form-control" type="text" id="phone_number" placeholder="+254*" name="phone_number"></div>
+                                        <div class="mb-3"><label class="form-label" for="phone_number"><strong>Phone Number</strong></label><input class="form-control" type="tel" id="phone_number" placeholder="" name="phone_number"></div>
                                     </div>
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="email"><strong>Email</strong></label><input class="form-control" type="email" id="email" placeholder="user@example.com" name="email"></div>
+                                        <div class="mb-3"><label class="form-label" for="email"><strong>Email</strong></label><input class="form-control" type="email" id="email" placeholder="" name="email"></div>
                                     </div>
                                 </div>
+                                       <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3"><label class="form-label" for="birthday"><strong>Select Birthday</strong></label><input class="form-control" type="date" id="birthday" name="birthday"></div>
+                                        </div> 
+                                         <div class="col">
+                                            <div class="mb-3"><label class="form-label" for="religion"><strong>Religion</strong></label>
+                                                <select name='religion' class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+                                                    <option selected>default</option>
+                                                    <option value="male">christian</option>
+                                                    <option value="female">Muslim</option>
+                                                    <option value="female">Budhist</option>
+                                                </select>
+                                            </div>
+                                        </div>                                       
+                                    </div>
                             
                             </div>
                         </div>
@@ -102,10 +129,10 @@
                             
                                     <div class="row">
                                         <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" placeholder="Jane Doe" name="mothers_name"></div>
+                                            <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" placeholder="" name="country"></div>
                                         </div>
                                         <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="county"><strong>County</strong></label><input class="form-control" type="text" id="county" placeholder="John Doe" name="county"></div>
+                                            <div class="mb-3"><label class="form-label" for="county"><strong>County</strong></label><input class="form-control" type="text" id="county" placeholder="" name="county"></div>
                                         </div>
                                     </div>
                                     <div class="col">

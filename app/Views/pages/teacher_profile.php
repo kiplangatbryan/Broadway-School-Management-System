@@ -6,8 +6,8 @@
         <h4 class="text-dark  mb-3">Teacher Management Panel</h4>
         <div>
             <ul role="tablist" class="nav nav-tabs">
-                <li role="presentation" class="nav-item"><a role="tab" data-bs-toggle="tab" class="nav-link active" href="<?php echo base_url() ?>#exams">Exams</a></li>
-                <li role="presentation" class="nav-item"><a role="tab" data-bs-toggle="tab" class="nav-link" href="<?php echo base_url() ?>#profile">Student Profile</a></li>
+                <li role="presentation" class="nav-item"><a role="tab" data-bs-toggle="tab" class="nav-link active" href="<?php echo base_url() ?>#exams">Overview</a></li>
+                <li role="presentation" class="nav-item"><a role="tab" data-bs-toggle="tab" class="nav-link" href="<?php echo base_url() ?>#profile">Profile</a></li>
                 <li role="presentation" class="nav-item"><a role="tab" data-bs-toggle="tab" class="nav-link" href="<?php echo base_url() ?>#security">Security</a></li>
             </ul>
             <div class="tab-content container-fluid" style="min-height: 60vh">
