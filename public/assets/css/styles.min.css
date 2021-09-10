@@ -107,3 +107,11 @@ img {
 .overlook_canvas .fix-width {
   margin-top: 15vh;
 }
+
+.bri__fix {
+  font-size: 13px !important;
+}
+
+.bri__fix td {
+  text-overflow: ellipsis;
+}

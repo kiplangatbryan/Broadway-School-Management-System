@@ -36,7 +36,7 @@ $routes->setAutoRoute(true);
 $routes->get('/login', 'login::index');
 $routes->get('/admin/dashboard', 'admin::dashboard');
 $routes->get('/admin/(:segment)', 'admin::view/$1');
-$routes->get('/admin/(:alpha)/profile/(:num)', 'admin::display/$1/$2');
+$routes->get('/admin/(:alpha)/profile/(:alphanum)', 'admin::display/$1/$2');
 
 
 

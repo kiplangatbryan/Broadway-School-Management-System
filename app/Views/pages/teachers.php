@@ -2,11 +2,18 @@
 
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h4 class="text-dark mb-0">Teacher Panel</h4><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="/create/teacher"><i class="fas fa-user-tie fa-sm text-white-50"></i>&nbsp; &nbsp;New Teacher</a>
+                    <div class="text-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><span>Home</span></a></li>
+                            <li class="breadcrumb-item"><a href="#"><span>Library</span></a></li>
+                            <li class="breadcrumb-item"><a href="#"><span>Data</span></a></li>
+                        </ol>
+                    </div>
+                        <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="/create/teacher"><i class="fas fa-user-tie fa-sm text-white-50"></i>&nbsp; &nbsp;New Teacher</a>
                     </div>
                     <div class="card shadow">
                         <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">Employee Information</p>
+                            <p class="text-primary m-0 fw-bold">All Teachers</p>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -23,14 +30,15 @@
                                 </div>
                             </div>
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                                <table class="table my-0" id="dataTable">
+                                <table class="table my-0 bri__fix" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                            <th>Roll</th>
                                             <th>Name</th>
-                                            <th>Role</th>
-                                            <th>Subjects</th>
                                             <th>Gender</th>
+                                            <th>Subjects</th>
+                                            <th>Address</th>
+                                            <th>Date of Birth</th>
                                             <th>Phone No</th>
                                             <th>Action</th>
                                         </tr>
@@ -38,13 +46,14 @@
                                     <tbody>                                        
                                         <?php foreach ($all_teachers as $key => $teacher): ?>
                                             <tr>                                    
-                                                <td><?php echo $key + 1 ?></td>
+                                                <td><?php echo  $teacher['teacher_id'] ?></td>
                                                 <td><img class="rounded-circle me-2" width="30" height="30" src="<?php echo base_url() ?>/assets/img/avatars/avatar1.jpeg">
                                                     <?php echo $teacher['name'] ?>
                                                 </td>
-                                                <td><?php echo $teacher['role'] ?></td>
-                                                <td><?php echo $teacher['subjects'] ?></td>
                                                 <td><?php echo $teacher['sex'] ?></td>
+                                                <td><?php echo $teacher['subjects'] ?></td>
+                                                <td class="text-nowrap"><?php echo $teacher['address'] ?></td>
+                                                <td><?php echo $teacher['birthday'] ?></td>
                                                 <td><?php echo $teacher['phone'] ?></td>
                                                 <td>
                                                     <a class="btn btn-warning btn-sm d-block"  role="button" href="<?php echo base_url().'/admin/teacher/profile/'.$teacher["teacher_id"] ?>">
@@ -77,6 +86,13 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
             </div>
 
+            <button data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-2" aria-expanded="false" aria-controls="accordion-1 .item-2" class="accordion-button collapsed">Accordion Item</button>
+
+            <p class="mb-0">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
 <?php include(APPPATH.'Views/templates/footer-section.php'); ?>

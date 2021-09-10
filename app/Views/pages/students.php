@@ -23,15 +23,17 @@
                                 </div>
                             </div>
                             <div class="table-responsive table-dark table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                                <table class="table my-0" id="dataTable">
+                                <table class="table my-0 bri__fix" id="dataTable">
                                     <thead>
                                         <tr>  
-                                            <th>No.</th>             
-                                            <th>Name(s)</th>             
-                                            <th>Reg No</th>   
-                                            <th>Class</th> 
+                                            <th>Roll</th>             
+                                            <th>Name(s)</th>    
                                             <th>Gender</th>             
-                                            <th>Status</th>             
+                                            <th>Class</th> 
+                                            <th>Parent Name</th>
+                                            <th>Address</th>
+                                            <th>Phone Number</th>
+                                            <th>Date of Birth</th>             
                                             <th>Actions</th>             
 
                                         </tr>
@@ -39,13 +41,15 @@
                                     <tbody>
                                         <?php foreach ($all_students as $key => $student): ?>
                                             <tr>
-                                                    <td><?php echo $key + 1 ?></td>
+                                                    <td><?php echo "#".$student['student_id'] ?></td>
                                                     <td><img class="rounded-circle me-2" width="30" height="30" src="<?php echo base_url() ?>/assets/img/avatars/avatar1.jpeg">
                                                         <?php echo $student['name'] ?>
                                                     </td>
-                                                    <td><?php echo $student['student_id'] ?></td>
-                                                    <td><?php echo $student['class_id'] ?></td>
                                                     <td><?php echo $student['sex'] ?></td>
+                                                    <td><?php echo $student['class_id'] ?></td>
+                                                    <td><?php echo $student['father_name'] ?></td>
+                                                    <td><?php echo $student['address'] ?></td>
+                                                    <td><?php echo $student['parent_phone'] ?></td>
                                                     <td><?php echo $student['birthday'] ?></td>
 
                                                     <td>

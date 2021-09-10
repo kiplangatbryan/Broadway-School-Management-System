@@ -16,29 +16,20 @@
         }
     
     ?>
-    <div class="row mb-3">
-        <div class="col-lg-4">
-            <div class="card mb-3">
-                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="<?php echo base_url() ?>/assets/img/dogs/image2.jpeg" width="160" height="160">
-                    <input type='file' name='avatar' id="avatar" class="btn btn-primary btn-sm">
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-8">
-            <form method='post' action='/create/teacher'>
-                <?= csrf_field() ?>
+    <form method='post' action='/create/teacher' enctype="multipart/form-data">
+        <?= csrf_field() ?>
 
-                   <?php if ($errors !== '') {
-                        echo "<div class='alert alert-danger'>";
-                            foreach($errors as $key => $error){
-                                print_r($error);
-                            }
-                        echo "</div>";
+            <?php if ($errors !== '') {
+                echo "<div class='alert alert-danger'>";
+                    foreach($errors as $key => $error){
+                        print_r($error);
                     }
+                echo "</div>";
+            }
 
-                    ?>
-                <div class="row">
-                    <div class="col">
+            ?>
+        <div class="row mb-3">
+                    <div class="col-lg-6">
                         <div class="card shadow mb-3">
                             <div class="card-header py-3">
                                 <p class="text-primary m-0 fw-bold">Basic Information</p>
@@ -48,7 +39,7 @@
                             
                                 <div class="row">
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="full_name"><strong>Full Name</strong></label><input class="form-control" type="text" id="full_name" placeholder="" name="full_name"></div>
+                                        <div class="mb-3"><label class="form-label" for="full_name"><strong>Name</strong></label><input class="form-control" type="text" id="full_name" placeholder="" name="full_name"></div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -84,24 +75,32 @@
                                         <div class="mb-3"><label class="form-label" for="email"><strong>Email</strong></label><input class="form-control" type="email" id="email" placeholder="" name="email"></div>
                                     </div>
                                 </div>
-                                       <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="mb-3"><label class="form-label" for="birthday"><strong>Select Birthday</strong></label><input class="form-control" type="date" id="birthday" name="birthday"></div>
-                                        </div> 
-                                         <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="religion"><strong>Religion</strong></label>
-                                                <select name='religion' class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                                                    <option selected>default</option>
-                                                    <option value="male">christian</option>
-                                                    <option value="female">Muslim</option>
-                                                    <option value="female">Budhist</option>
-                                                </select>
-                                            </div>
-                                        </div>                                       
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3"><label class="form-label" for="birthday"><strong>Select Birthday</strong></label><input class="form-control" type="date" id="birthday" name="birthday"></div>
+                                    </div> 
+                                        <div class="col">
+                                        <div class="mb-3"><label class="form-label" for="religion"><strong>Religion</strong></label>
+                                            <select name='religion' class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+                                                <option selected>default</option>
+                                                <option value="male">christian</option>
+                                                <option value="female">Muslim</option>
+                                                <option value="female">Budhist</option>
+                                            </select>
+                                        </div>
+                                    </div>                                       
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="form-label" for="avatar"><strong>Upload Teacher Photo</strong></label>
+                                        <input class="form-control" type="file"  id="avatar" name="avatar">
                                     </div>
+                                </div>
                             
                             </div>
                         </div>
+                    </div>
+                    <div class="col-lg-6">
                         <div class="card shadow mb-3">
                             <div class="card-header py-3">
                                 <p class="text-primary m-0 fw-bold">Subject Combination</p>
@@ -143,10 +142,8 @@
                         </div>
                     </div>
                 </div>
-        </form>
         </div>
-    </div>
-</div>
+    </form>
 </div>
 
 <?php include(APPPATH.'Views/templates/footer-section.php'); ?>
