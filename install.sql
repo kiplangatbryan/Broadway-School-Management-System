@@ -1,55 +1,56 @@
+SET FOREIGN_KEY_CHECKS = 0;
 
-
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE `admin` (
-  `admin_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `email` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `password` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `level` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `authentication_key` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`admin_id`)
+DROP TABLE IF EXISTS admin;
+CREATE TABLE admin (
+  admin_id int(11) NOT NULL AUTO_INCREMENT,
+  name longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  email longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  password longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  level longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  authentication_key longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (admin_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `admin` VALUES (1,'Mr. Admin','admin@admin.com','admin123','1','');
+INSERT INTO admin VALUES (1,'Mr. Admin','admin@admin.com','admin123','1','');
 
 
 
-DROP TABLE IF EXISTS `class`;
-CREATE TABLE `class` (
-  `class_id` int(11) NOT NULL,
-  `name` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `teacher_id` int(11) NOT NULL,
-  `prefect_id` int(11) NOT NULL,
-  PRIMARY KEY (`class_id`)
+DROP TABLE IF EXISTS classes;
+CREATE TABLE classes (
+  class_id int(11) NOT NULL,
+  name longtext COLLATE utf8_unicode_ci NOT NULL,
+  teacher_id int(11) NOT NULL,
+  prefect_id int(11) NOT NULL,
+  PRIMARY KEY (class_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
-INSERT INTO `class` VALUES (1,'Form 1','', ''),(2,'Form 2','', ''),(4,'Form 3','', ''),(5,'Form 4','', '');
+INSERT INTO classes VALUES (1,'Form 1','', ''),(2,'Form 2','', ''),(4,'Form 3','', ''),(5,'Form 4','', '');
 
-DROP TABLE IF EXISTS `student`;
-CREATE TABLE `student` (
-  `student_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `birthday` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `sex` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `religion` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `blood_group` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `address` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `parent_phone` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `parent_email` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `password` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `father_name` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `mother_name` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `class_id` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `role` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `profileUrl` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `authentication_key` longtext COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`student_id`)
+DROP TABLE IF EXISTS students;
+CREATE TABLE students (
+  student_id int(11) NOT NULL AUTO_INCREMENT,
+  name longtext COLLATE utf8_unicode_ci NOT NULL,
+  birthday longtext COLLATE utf8_unicode_ci NOT NULL,
+  sex longtext COLLATE utf8_unicode_ci NOT NULL,
+  religion longtext COLLATE utf8_unicode_ci NOT NULL,
+  blood_group longtext COLLATE utf8_unicode_ci NOT NULL,
+  address longtext COLLATE utf8_unicode_ci NOT NULL,
+  parent_phone longtext COLLATE utf8_unicode_ci NOT NULL,
+  parent_email longtext COLLATE utf8_unicode_ci NOT NULL,
+  password longtext COLLATE utf8_unicode_ci NOT NULL,
+  father_name longtext COLLATE utf8_unicode_ci NOT NULL,
+  mother_name longtext COLLATE utf8_unicode_ci NOT NULL,
+  class_id INT(11) COLLATE utf8_unicode_ci NOT NULL,
+  role longtext COLLATE utf8_unicode_ci NOT NULL,
+  profileUrl longtext COLLATE utf8_unicode_ci NOT NULL,
+  authentication_key longtext COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (student_id),
+  FOREIGN KEY (class_id) REFERENCES classes (class_id)  
 ) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
-INSERT INTO `student` VALUES 
+INSERT INTO students VALUES 
     (1011,'Lydia Adams','06/20/2014','female','','','3103 Modoc Alley','208-259-2964','LydiaAdams@gmail.com','','james jordan','mary jane','2','', '', ''),
     (1245,'Royce Miller','06/06/2018','male','','','FEDERAL COLLEGE OF EDUCATION, OSIELE ABEOKUTA OGUN STATE','08033527716','royce@gmail.com','','Simon Kella','Milly Kwamboka','3','', '',''),
     (899,'Ade Wellis','06/11/2014','male','','','14 Aladin Road','080-255-9586','luiswelt@gmail.com','','James Maina','lily Chepkurui','3','', '', ''),
@@ -61,39 +62,55 @@ INSERT INTO `student` VALUES
 
 
 
-DROP TABLE IF EXISTS `subject`;
-CREATE TABLE `subject` (
-  `subject_id` int(11) NOT NULL,
-  `name` longtext COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`subject_id`)
+DROP TABLE IF EXISTS subjects;
+CREATE TABLE subjects (
+  subject_id int(11) NOT NULL,
+  name longtext COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (subject_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
-INSERT INTO `subject` VALUES (1,'Mathematics'),(2,'Calculus'),(3,'Computer Science'),(4,'Humanity'),(5,'Neural Networks'), (6,'Robotics');
+INSERT INTO subjects VALUES (1,'Mathematics'),(2,'Calculus'),(3,'Computer Science'),(4,'Humanity'),(5,'Neural Networks'), (6,'Robotics');
 
 
-DROP TABLE IF EXISTS `teacher`;
-CREATE TABLE `teacher` (
-  `teacher_id` VARCHAR(11) NOT NULL,
-  `name` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `birthday` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `sex` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `religion` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `profileUrl` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `blood_group` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `role` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `address` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `phone` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `email` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `password` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `country` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `county` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `subjects` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `authentication_key` longtext COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`teacher_id`)
+DROP TABLE IF EXISTS teachers;
+CREATE TABLE teachers (
+  teacher_id int(11) NOT NULL AUTO_INCREMENT,
+  hash VARCHAR(11) NOT NULL,
+  name longtext COLLATE utf8_unicode_ci NOT NULL,
+  birthday longtext COLLATE utf8_unicode_ci NOT NULL,
+  sex longtext COLLATE utf8_unicode_ci NOT NULL,
+  religion longtext COLLATE utf8_unicode_ci NOT NULL,
+  profileUrl longtext COLLATE utf8_unicode_ci NOT NULL,
+  blood_group longtext COLLATE utf8_unicode_ci NOT NULL,
+  role longtext COLLATE utf8_unicode_ci NOT NULL,
+  address longtext COLLATE utf8_unicode_ci NOT NULL,
+  phone longtext COLLATE utf8_unicode_ci NOT NULL,
+  email longtext COLLATE utf8_unicode_ci NOT NULL,
+  password longtext COLLATE utf8_unicode_ci NOT NULL,
+  country longtext COLLATE utf8_unicode_ci NOT NULL,
+  county longtext COLLATE utf8_unicode_ci NOT NULL,
+  subjects longtext COLLATE utf8_unicode_ci NOT NULL,
+  authentication_key longtext COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (teacher_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `teacher` VALUES 
+INSERT INTO teachers(hash, name,birthday, sex, religion,profileUrl, blood_group, role, address, phone, email, password, country, county, subjects, authentication_key) VALUES 
 ('PERT8eoZgLa','Tom Connolly','06/03/1976','male','','', '','','694 Michael Street','713-732-6331','TomConnolly@teachers.com','','', '', '', ''),
-('KtxNG271SP5','Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','AlfieGibbs@gmail..com','','', '', '', '');
+('KtxNG271SP5','Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','jordiealaba@gmail..com','','', '', '', ''),
+('Y8DRa6q_9FD','Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','luisenrique@gmail..com','','', '', '', ''),
+('Bk21ciawUyL','Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','juliesanchez@gmail..com','','', '', '', ''),
+('lidM5K6i6wK','Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','marcuschege@gmail..com','','', '', '', '');
 
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+
+DROP TABLE IF EXISTS teacherclass;
+
+CREATE TABLE teacherclass(
+  class_id int(11) NOT NULL,
+  teacher_id int(11) NOT NULL,
+  FOREIGN KEY (class_id) REFERENCES classes (class_id),
+  FOREIGN KEY (teacher_id) REFERENCES teachers (teacher_id)
+);

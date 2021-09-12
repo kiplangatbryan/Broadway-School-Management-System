@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class Learner extends Model
 {
     // ...
-    protected $table      = 'student';
+    protected $table      = 'students';
 
     protected $protectedFields = ['password', 'authentication_key'];
     protected $returnType     = 'array';

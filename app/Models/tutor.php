@@ -4,10 +4,10 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 
-class Teacher extends Model
+class Tutor extends Model
 {
     // ...
-    protected $table      = 'teacher';
+    protected $table      = 'teachers';
     protected $primaryKey = 'teacher_id';
 
     // protected $useAutoIncrement = true;
@@ -15,7 +15,7 @@ class Teacher extends Model
     protected $returnType     = 'array';
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['teacher_id', 'name', 'birthday','sex' , 'religion', 'profileUrl','blood_group','role', 'address' , 'phone', 'email', 'country', 'county','subjects'];
+    protected $allowedFields = ['teacher_id',"hash", 'name', 'birthday','sex' , 'religion', 'profileUrl','blood_group','role', 'address' , 'phone', 'email', 'country', 'county','subjects'];
 
     // protected $useTimestamps = false;
     // protected $createdField  = 'created_at';

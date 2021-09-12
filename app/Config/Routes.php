@@ -38,6 +38,14 @@ $routes->get('/admin/dashboard', 'admin::dashboard');
 $routes->get('/admin/(:segment)', 'admin::view/$1');
 $routes->get('/admin/(:alpha)/profile/(:alphanum)', 'admin::display/$1/$2');
 
+$routes->get('/student/dashboard', 'student::dashboard');
+$routes->get('/student/(:segment)', 'student::view/$1');
+
+$routes->get('/teacher/dashboard', 'teacher::dashboard');
+$routes->get('/teacher/(:segment)', 'teacher::view/$1');
+
+
+
 
 
 

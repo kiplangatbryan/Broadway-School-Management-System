@@ -115,3 +115,32 @@ img {
 .bri__fix td {
   text-overflow: ellipsis;
 }
+
+/* assignments section*/
+.custom-box {
+  border: 1px solid rgb(78, 115, 223);
+  padding: 1em;
+  border-radius: 5px;
+  position: relative;
+}
+
+.custom-box .lang {
+  padding: 0.2em 1em;
+  border-radius: 3px;
+  position: absolute;
+  top: -1em;
+  left: 2em;
+}
+
+/* assignment - teacher tweak */
+.custom-box .big_text {
+  /* max-width: 250px !important; */
+  font-size: 40px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.custom-box .mild {
+  display: flex;
+  align-items: baseline;
+}

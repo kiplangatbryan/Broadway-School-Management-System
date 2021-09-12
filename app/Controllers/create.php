@@ -4,7 +4,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\Learner;
 use App\Models\Subject;
-use App\Models\Teacher;
+use App\Models\Tutor;
 
 use Hidehalo\Nanoid\Client;
 use Hidehalo\Nanoid\GeneratorInterface;
@@ -36,7 +36,7 @@ class Create extends Controller
         $client = new Client();
         # more safer random generator
         $nanoID =  $client->generateId($size = 11, $mode = Client::MODE_DYNAMIC);
-        $teacher_model = new Teacher();
+        $teacher_model = new Tutor();
          $result = $teacher_model->check_data($nanoID);
 
         if ($result == null ){

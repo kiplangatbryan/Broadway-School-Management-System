@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\Learner;
-use App\Models\Teacher;
+use App\Models\Tutor;
 use App\Models\Subject;
 
 
@@ -23,7 +23,7 @@ class Admin extends Controller
        
 
         $student_model = new Learner();
-        $teacher_model = new Teacher();
+        $teacher_model = new Tutor();
         $subject_model = new Subject();
 
         $page_data['path'] = $this->request->getPath();

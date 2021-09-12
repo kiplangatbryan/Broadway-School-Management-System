@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 class Subject extends Model
 {
     // ...
-    protected $table      = 'subject';
+    protected $table      = 'subjects';
     protected $primaryKey = 'id';
 
     protected $useAutoIncrement = true;

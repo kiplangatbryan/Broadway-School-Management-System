@@ -23,10 +23,10 @@
         </a>
         <hr class="sidebar-divider my-0">
         <ul class="navbar-nav text-light" id="accordionSidebar">
-            <li class="nav-item"><a class="nav-link <?php if($path === 'student/dashboard') echo 'active' ?>" href="/student/dashboard"><i class="fas fa-tachometer-alt"></i><span>&nbsp;Dashboard</span></a></li>
-            <li class="nav-item"><a class="nav-link <?php if($path === 'student/assignments') echo 'active' ?>" href="/student/assignments"><i class="fa fa-upload"></i><span>&nbsp;Assignments ME</span></a>
-            <li class="nav-item"><a class="nav-link <?php if($path === 'student/results') echo 'active' ?>" href="/student/results"><i class="fas fa-dollar-sign"></i><span>&nbsp; &nbsp;Results</span></a></li>
-            <li class="nav-item"><a class="nav-link <?php if($path === 'student/elibrary') echo 'active' ?>" href="/student/elibrary"><i class="fas fa-book"></i><span>&nbsp;E-library</span></a></li>
+            <li class="nav-item"><a class="nav-link <?php if($path === 'teacher/dashboard') echo 'active' ?>" href="/teacher/dashboard"><i class="fas fa-tachometer-alt"></i><span>&nbsp;Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link <?php if($path === 'teacher/assignments') echo 'active' ?>" href="/teacher/assignments"><i class="fa fa-upload"></i><span>&nbsp;Assignments ME</span></a>
+            <li class="nav-item"><a class="nav-link <?php if($path === 'teacher/results') echo 'active' ?>" href="/teacher/results"><i class="fas fa-dollar-sign"></i><span>&nbsp; &nbsp;Results</span></a></li>
+            <li class="nav-item"><a class="nav-link <?php if($path === 'teacher/elibrary') echo 'active' ?>" href="/teacher/elibrary"><i class="fas fa-book"></i><span>&nbsp;E-library</span></a></li>
             <li class="nav-item"><a class="nav-link" href="/login/deauth"><i class="fa fa-sign-out"></i><span>&nbsp;Log out</span></a></li>
 
         </ul>

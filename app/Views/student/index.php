@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
 <div class="d-sm-flex justify-content-between align-items-center mb-4">
-    <h3 class="text-dark mb-0">Dashboard</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+    <h3 class="text-dark mb-0">Overview</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
 </div>
 <div class="row">
     <div class="col-md-6 col-xl-3 mb-4">
@@ -11,8 +11,8 @@
             <div class="card-body">
                 <div class="row align-items-center no-gutters">
                     <div class="col me-2">
-                        <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>CURRENT CLASS</span></div>
-                        <div class="text-dark fw-bold h5 mb-0"><span>Form 3</span></div>
+                        <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>PENDING ASSINGMENTS</span></div>
+                        <div class="text-dark fw-bold h5 mb-0"><span>0</span></div>
                     </div>
                     <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                 </div>
@@ -164,7 +164,7 @@
                         </div>
                         <div class="row justify-content-between align-items-center text-md">
                             <div class="col-4 text-primary">Jeniffer Lopez</div> 
-                            <div class="col-8 text-grey">5 min ago</span>
+                            <div class="col-8 text-grey">5 min ago</div>
                         </div>
                         <div class="mt-2">
                             Great student management portal, i could actually pay for it 
@@ -223,9 +223,5 @@
                 
         </div>
     </div>
-</div>
 
-</div>
-</div>
-<script src="<?php echo base_url() ?>/assets/js/chart.min.js"></script>
 <?php include(APPPATH.'Views/templates/footer-section.php'); ?>

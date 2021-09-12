@@ -5,7 +5,7 @@ use CodeIgniter\Model;
 class Teacher extends Model
 {
     // ...
-    protected $table      = 'users';
+    protected $table      = 'classes';
     protected $primaryKey = 'id';
 
     protected $useAutoIncrement = true;

@@ -25,7 +25,7 @@ class Student extends Controller
     public function view($page = 'index')
     {
         $this->check_session();
-        if ( ! is_file(APPPATH.'/Views/pages/'.$page.'.php'))
+        if ( ! is_file(APPPATH.'/Views/student/'.$page.'.php'))
         {
             // Whoops, we don't have a page for that!
             throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
@@ -36,7 +36,7 @@ class Student extends Controller
         $this->check_session();
 
 
-        return view('pages/'.$page, $page_data);
+        return view('student/'.$page, $page_data);
     }
     public function display($view , $reg_no){
         // search for reg_no

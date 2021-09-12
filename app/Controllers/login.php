@@ -5,7 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\Admin;
 use App\Models\Learner;
-
+use App\Models\Tutor;
 
 class Login extends Controller
 
@@ -56,6 +56,22 @@ class Login extends Controller
 
     }
 
+    public function check_teacher_validity(){
+        $model = new Tutor();
+        $email = $this->request->getPost('email');
+        $response = $model->get_data($email);
+        
+         if($response == null){
+            return 0;
+        }
+        if ($response['password'] == 'default_pass'){
+            $session = session();
+            $session->set('user_data', ['first_login' => 1]);
+        }
+        return 'teacher' ==  $this->request->getPost('password') ?  $response : 0;
+
+    }
+
     public  function index()
     {
         $this->check_session();
@@ -100,19 +116,18 @@ class Login extends Controller
         // render  
         if($this->request->getMethod() == 'post' && $this->validate($this->validationRules)){
             // check validity
-            $status = $this->check_admin_validity();
-            if($status == 0 || $status['code'] == 0){
+            $status_dt = $this->check_teacher_validity();
+            if(!isset($status_dt['teacher_id']) && $status_dt == 0){
                 $data['errors'] = 'Invalid username or password';
                 return view('pages/login', $data);
             }
+
+            $status_dt['teacher_login'] = 1; 
+
+
             // set session here
             $session = session();
-            $user_data = [
-                'email' => $this->request->getPost('email'),
-                'name' => $status['name'],
-                'teacher_login' => 1
-            ];
-            $session->set('user_data', $user_data);
+            $session->set('user_data', $status_dt);
             return $this->response->redirect(base_url().'/teacher/dashboard', 'refresh');   
         }
        if( $this->validator == null)
