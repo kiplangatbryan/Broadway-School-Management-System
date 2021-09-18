@@ -107,10 +107,12 @@ class Create extends Controller
         $page_data['path'] = $this->request->getPath();
 
         if ($this->request->getMethod() == 'post' && $this->validate($this->teacherValidation)){
-            $teacher_model = new Teacher();
+            $teacher_model = new Tutor();
 
             $this->check_session();
             $customId = $this->generateID();
+
+            $profileImg = $this->studentAvatar();
 
             $teacher_model->save([
             'teacher_id' => $customId,
@@ -124,6 +126,7 @@ class Create extends Controller
             'county' => $this->request->getPost('county'),
             'religion' => $this->request->getPost('religion'),
             'birthday' => $this->request->getPost('birthday'),
+            'profileUrl' => $profileImg
         ]);
         return $this->response->redirect(base_url().'/create/teacher?result=success&_id='.$customId);
 
@@ -140,6 +143,20 @@ class Create extends Controller
 
         return view('/pages/create_teacher', $page_data);
 
+    }
+
+    public function studentAvatar(){
+        // handle student file upload
+        $file = $this->request->getFile('avatar');
+        $newName = $file->getRandomName();
+        $folder_name = 'student-avatar';
+
+        if ($file->isValid() && ! $file->hasMoved())
+        {
+            $file->move(WRITEPATH.$folder_name, $newName);
+
+        }
+        return $newName;
     }
   
 

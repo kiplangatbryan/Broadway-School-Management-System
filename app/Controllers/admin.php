@@ -45,10 +45,13 @@ class Admin extends Controller
         }
         $student_model = new Learner();
         $teacher_model = new Teacher();
+        $subject_model =  new Subject();
 
         $page_data['path'] = $this->request->getPath();
         $page_data['all_students'] = $page == 'students' ? $student_model->get_students(): "";
         $page_data['all_teachers'] = $page == 'teachers' ? $teacher_model->get_teachers(): "";
+        $page_data['all_subjects'] = $page == 'subjects' ? $subject_model->get_subjects(): "";
+
 
 
         $this->check_session();
@@ -66,7 +69,7 @@ class Admin extends Controller
                 $page_data['profile'] = $student_model->where('student_id', $id)->first();
                 $page_data['view_page'] = 'student_profile'; 
             }
-            else{
+            if( $view  === 'teacher'){
                 $teacher_model = new Teacher();
                 $page_data['profile'] = $teacher_model->where('teacher_id', $id)->first();
                 $page_data['view_page'] = 'teacher_profile'; 

@@ -7,14 +7,14 @@ class Subject extends Model
 {
     // ...
     protected $table      = 'subjects';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'subject_id';
 
     protected $useAutoIncrement = true;
 
     protected $returnType     = 'array';
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['firstname', 'lastname', 'email', 'message'];
+    protected $allowedFields = ['subject_id', 'name'];
 
     // protected $useTimestamps = false;
     // protected $createdField  = 'created_at';

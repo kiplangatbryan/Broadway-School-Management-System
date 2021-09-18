@@ -1,4 +1,5 @@
 <?php include(APPPATH.'Views/templates/side-nav.php'); ?>
+<?php include(APPPATH.'Views/templates/lunar-css.php'); ?>
 
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
@@ -83,5 +84,6 @@
                     </div>
                 </div>
             </div>
-
+            
+<?php include(APPPATH.'Views/templates/lunar-scripts.php'); ?>
 <?php include(APPPATH.'Views/templates/footer-section.php'); ?>

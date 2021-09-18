@@ -2,13 +2,13 @@ SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS admin;
 CREATE TABLE admin (
-  admin_id int(11) NOT NULL AUTO_INCREMENT,
+  id int(11) NOT NULL AUTO_INCREMENT,
   name longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   email longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   password longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   level longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   authentication_key longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (admin_id)
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO admin VALUES (1,'Mr. Admin','admin@admin.com','admin123','1','');
@@ -17,11 +17,11 @@ INSERT INTO admin VALUES (1,'Mr. Admin','admin@admin.com','admin123','1','');
 
 DROP TABLE IF EXISTS classes;
 CREATE TABLE classes (
-  class_id int(11) NOT NULL,
+  id INT(11) COLLATE utf8_unicode_ci NOT NULL,
   name longtext COLLATE utf8_unicode_ci NOT NULL,
   teacher_id int(11) NOT NULL,
   prefect_id int(11) NOT NULL,
-  PRIMARY KEY (class_id)
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -29,7 +29,7 @@ INSERT INTO classes VALUES (1,'Form 1','', ''),(2,'Form 2','', ''),(4,'Form 3','
 
 DROP TABLE IF EXISTS students;
 CREATE TABLE students (
-  student_id int(11) NOT NULL AUTO_INCREMENT,
+  id int(11) NOT NULL,
   name longtext COLLATE utf8_unicode_ci NOT NULL,
   birthday longtext COLLATE utf8_unicode_ci NOT NULL,
   sex longtext COLLATE utf8_unicode_ci NOT NULL,
@@ -45,8 +45,8 @@ CREATE TABLE students (
   role longtext COLLATE utf8_unicode_ci NOT NULL,
   profileUrl longtext COLLATE utf8_unicode_ci NOT NULL,
   authentication_key longtext COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (student_id),
-  FOREIGN KEY (class_id) REFERENCES classes (class_id)  
+  PRIMARY KEY (id),
+  FOREIGN KEY (class_id) REFERENCES classes (id)  
 ) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -64,9 +64,9 @@ INSERT INTO students VALUES
 
 DROP TABLE IF EXISTS subjects;
 CREATE TABLE subjects (
-  subject_id int(11) NOT NULL,
+  id INT(11) NOT NULL,
   name longtext COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (subject_id)
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -75,7 +75,7 @@ INSERT INTO subjects VALUES (1,'Mathematics'),(2,'Calculus'),(3,'Computer Scienc
 
 DROP TABLE IF EXISTS teachers;
 CREATE TABLE teachers (
-  teacher_id int(11) NOT NULL AUTO_INCREMENT,
+  id INT(11) NOT NULL,
   hash VARCHAR(11) NOT NULL,
   name longtext COLLATE utf8_unicode_ci NOT NULL,
   birthday longtext COLLATE utf8_unicode_ci NOT NULL,
@@ -92,25 +92,24 @@ CREATE TABLE teachers (
   county longtext COLLATE utf8_unicode_ci NOT NULL,
   subjects longtext COLLATE utf8_unicode_ci NOT NULL,
   authentication_key longtext COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (teacher_id)
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO teachers(hash, name,birthday, sex, religion,profileUrl, blood_group, role, address, phone, email, password, country, county, subjects, authentication_key) VALUES 
-('PERT8eoZgLa','Tom Connolly','06/03/1976','male','','', '','','694 Michael Street','713-732-6331','TomConnolly@teachers.com','','', '', '', ''),
-('KtxNG271SP5','Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','jordiealaba@gmail..com','','', '', '', ''),
-('Y8DRa6q_9FD','Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','luisenrique@gmail..com','','', '', '', ''),
-('Bk21ciawUyL','Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','juliesanchez@gmail..com','','', '', '', ''),
-('lidM5K6i6wK','Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','marcuschege@gmail..com','','', '', '', '');
+INSERT INTO teachers(id, hash, name,birthday, sex, religion,profileUrl, blood_group, role, address, phone, email, password, country, county, subjects, authentication_key) VALUES 
+(1,'PERT8eoZgLa','Tom Connolly','06/03/1976','male','','', '','','694 Michael Street','713-732-6331','TomConnolly@teachers.com','','', '', '', ''),
+(2,'KtxNG271SP5','Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','jordiealaba@gmail..com','','', '', '', ''),
+(3,'Y8DRa6q_9FD','Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','luisenrique@gmail..com','','', '', '', ''),
+(5, 'Bk21ciawUyL','Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','juliesanchez@gmail..com','','', '', '', ''),
+(6,'lidM5K6i6wK','Alfie Nolly','12/08/1985','female','','', '','','4841 Andell Road','614-901-1543','marcuschege@gmail..com','','', '', '', '');
 
 
-SET FOREIGN_KEY_CHECKS = 0;
 
 
-DROP TABLE IF EXISTS teacherclass;
+DROP TABLE IF EXISTS subjectteacher;
 
-CREATE TABLE teacherclass(
-  class_id int(11) NOT NULL,
-  teacher_id int(11) NOT NULL,
-  FOREIGN KEY (class_id) REFERENCES classes (class_id),
-  FOREIGN KEY (teacher_id) REFERENCES teachers (teacher_id)
+CREATE TABLE subjectteacher(
+  subject_id INT(11) NOT NULL,
+  teacher_id INT(11) NOT NULL,
+  FOREIGN KEY (subject_id) REFERENCES subjects (id),
+  FOREIGN KEY (teacher_id) REFERENCES teachers (id)
 );

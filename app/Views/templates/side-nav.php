@@ -33,11 +33,46 @@
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link <?php if($path === 'admin/dashboard') echo 'active' ?>" href="/admin/dashboard"><i class="fas fa-tachometer-alt"></i><span>&nbsp;Dashboard</span></a></li>
+                    <li class="accordion-item bg-transparent">
+                        <div class="accordion-header">
+                            <div class="nav-link" style="display: flex; align-items: center;flex-direction: row;margin-left: 1em;padding: .2em 0;font-size: 14px">
+                                 <i class="fa fa-users"></i>&nbsp;&nbsp;<span>
+                                <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#studentOne" aria-controls="collapseOne">
+                                    Students ME
+                                </a>
+                            </div>
+                            <div id="studentOne" class="accordion-collapse collapse" style="font-size: 14px" data-bs-parent="#parentLink">
+                                <div class="accordion-body bg-danger py-0">
+                                   <a class="nav-link <?php if($path === 'admin/students') echo 'active' ?>" href="/admin/students"><i class="fas fa-users"></i>&nbsp;&nbsp;All students</a>
+                                   <a class="nav-link <?php if($path === 'create/student') echo 'active' ?>" href="/create/student"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add student</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="accordion-item bg-transparent">
+                        <div class="accordion-header">
+                            <div class="nav-link" style="display: flex; align-items: center;flex-direction: row;margin-left: 1em;padding: .2em 0;font-size: 14px">
+                                 <i class="fas fa-user-tie"></i>&nbsp;&nbsp;<span>
+                                <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#teacherOne" aria-controls="collapseOne">
+                                    Teachers ME
+                                </a>
+                            </div>
+                            <div id="teacherOne" class="accordion-collapse collapse" style="font-size: 14px" data-bs-parent="#parentLink">
+                                <div class="accordion-body bg-danger py-0">
+                                   <a class="nav-link <?php if($path === 'admin/teachers') echo 'active' ?>" href="/admin/teachers"><i class="fas fa-users"></i>&nbsp;&nbsp;All Teachers</a>
+                                   <a class="nav-link <?php if($path === 'create/teacehr') echo 'active' ?>" href="/create/teacher"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Teacher</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/subjects') echo 'active' ?>" href="/admin/subjects"><i class="fa fa-copy"></i><span>&nbsp;Subjects</span></a></li>
+                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/notices') echo 'active' ?>" href="/admin/notices"><i class="fas fa-file-alt"></i><span>&nbsp;Notices</span></a></li>
+                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/messages') echo 'active' ?>" href="/admin/messages"><i class="fas fa-envelope"></i><span>&nbsp;Messages</span></a></li>
+
                     <li class="nav-item"><a class="nav-link <?php if($path === 'admin/events') echo 'active' ?>" href="/admin/events"><i class="fa fa-calendar"></i><span>&nbsp;Events</span></a></li>
-                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/students') echo 'active' ?>" href="/admin/students"><i class="fa fa-users"></i><span>&nbsp;Students ME</span></a>
-                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/teachers') echo 'active' ?>" href="/admin/teachers"><i class="fas fa-user-tie"></i>&nbsp;Teachers ME</a></li>
                     <li class="nav-item"><a class="nav-link <?php if($path === 'admin/fee_structure') echo 'active' ?>" href="/admin/fee_structure"><i class="fas fa-dollar-sign"></i><span>&nbsp; &nbsp;Fee Structure</span></a></li>
-                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/profile') echo 'active' ?>" href="/admin/profile"><i class="fas fa-user"></i><span>&nbsp; Profile</span></a></li>
+                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/profile') echo 'active' ?>" href="/admin/profile"><i class="fas fa-wheelchair"></i><span>&nbsp; Account</span></a></li>
+                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/settings') echo 'active' ?>" href="/admin/settings"><i class="fas fa-cog"></i><span>&nbsp; Settings</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="/login/deauth"><i class="fa fa-sign-out"></i><span>&nbsp;Log out</span></a></li>
 
                 </ul>
@@ -90,7 +125,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-primary badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
                                         <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
                                             <div class="dropdown-list-image me-3"><img class="rounded-circle" src="<?php echo base_url(); ?>/assets/img/avatars/avatar4.jpeg">
