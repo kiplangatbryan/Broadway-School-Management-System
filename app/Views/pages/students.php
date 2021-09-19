@@ -40,21 +40,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($all_students as $key => $student): ?>
+                                        <?php foreach ($all_students as $key => $row): ?>
                                             <tr>
-                                                    <td><?php echo "#".$student['student_id'] ?></td>
-                                                    <td><img class="rounded-circle me-2" width="30" height="30" src="<?php echo base_url() ?>/assets/img/avatars/avatar1.jpeg">
-                                                        <?php echo $student['name'] ?>
+                                                    <td><?php echo "#".$row['student_id'] ?></td>
+                                                    <td>
+                                                        <img class="rounded-circle me-2" width="30" height="30" src="<?php  echo $row['profileUrl'] === '' ? site_url('/assets/img/favicon.png'): site_url('/uploads/studentAvatars/'.$row['profileUrl']) ?>">
+                                                        <?php echo $row['name'] ?>
                                                     </td>
-                                                    <td><?php echo $student['sex'] ?></td>
-                                                    <td><?php echo $student['class_id'] ?></td>
-                                                    <td><?php echo $student['father_name'] ?></td>
-                                                    <td><?php echo $student['address'] ?></td>
-                                                    <td><?php echo $student['parent_phone'] ?></td>
-                                                    <td><?php echo $student['birthday'] ?></td>
+                                                    <td><?php echo $row['sex'] ?></td>
+                                                    <td><?php echo $row['class_id'] ?></td>
+                                                    <td><?php echo $row['father_name'] ?></td>
+                                                    <td><?php echo $row['address'] ?></td>
+                                                    <td><?php echo $row['parent_phone'] ?></td>
+                                                    <td><?php echo $row['birthday'] ?></td>
 
                                                     <td>
-                                                        <a class="btn btn-warning btn-sm d-block"  role="button" href="<?php echo base_url().'/admin/student/profile/'.$student["student_id"] ?>">
+                                                        <a class="btn btn-warning btn-sm d-block"  role="button" href="<?php echo base_url().'/admin/student/profile/'.$row["student_id"] ?>">
                                                             <i class="fas fa-eye fa-sm text-white-50"></i>&nbsp; &nbsp;View
                                                         </a>
                                                     </td>

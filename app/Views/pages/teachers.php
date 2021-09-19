@@ -36,7 +36,7 @@
                                             <th>Roll</th>
                                             <th>Name</th>
                                             <th>Gender</th>
-                                            <th>Subjects</th>
+                                            <th>Email ID</th>
                                             <th>Address</th>
                                             <th>Date of Birth</th>
                                             <th>Phone No</th>
@@ -44,19 +44,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>                                        
-                                        <?php foreach ($all_teachers as $key => $teacher): ?>
+                                        <?php foreach ($all_teachers as $key => $row): ?>
                                             <tr>                                    
-                                                <td><?php echo  $teacher['teacher_id'] ?></td>
-                                                <td><img class="rounded-circle me-2" width="30" height="30" src="<?php echo base_url() ?>/assets/img/avatars/avatar1.jpeg">
-                                                    <?php echo $teacher['name'] ?>
+                                                <td><?php echo '# '.$row['teacher_id'] ?></td>
+                                                <td><img class="rounded-circle me-2" width="30" height="30" src="<?php echo $row['profileUrl'] === '' ? site_url('/assets/img/avatar2.jpeg'): site_url('/uploads/studentAvatars/'.$row['profileUrl']) ?>">
+                                                    <?php echo $row['name'] ?>
                                                 </td>
-                                                <td><?php echo $teacher['sex'] ?></td>
-                                                <td><?php echo $teacher['subjects'] ?></td>
-                                                <td class="text-nowrap"><?php echo $teacher['address'] ?></td>
-                                                <td><?php echo $teacher['birthday'] ?></td>
-                                                <td><?php echo $teacher['phone'] ?></td>
+                                                <td><?php echo $row['sex'] ?></td>
+                                                <td><?php echo $row['email'] ?></td>
+                                                <td class="text-nowrap"><?php echo $row['address'] ?></td>
+                                                <td><?php echo $row['birthday'] ?></td>
+                                                <td><?php echo $row['phone'] ?></td>
                                                 <td>
-                                                    <a class="btn btn-warning btn-sm d-block"  role="button" href="<?php echo base_url().'/admin/teacher/profile/'.$teacher["teacher_id"] ?>">
+                                                    <a class="btn btn-warning btn-sm d-block"  role="button" href="<?php echo base_url().'/admin/teacher/profile/'.$row["teacher_id"] ?>">
                                                         <i class="fas fa-eye fa-sm text-white-50"></i>&nbsp; &nbsp;View
                                                     </a>
                                                 </td>                                

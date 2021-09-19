@@ -66,6 +66,26 @@ class Create extends Controller
         return 0;
     }
 
+    public function studentAvatar(){
+        // handle student file upload
+        $file = $this->request->getFile('avatar');
+        $newName = $file->getRandomName();
+        $folder_name = 'studentAvatars';
+        
+        // validate 
+        $clear = $this->validate([
+            'avatar' => 'uploaded[avatar]|max_size[avatar, 1024]|ext_in,jpg,jpeg]'
+        ]);
+
+        if ($file->isValid() && ! $file->hasMoved())
+        {
+            // move the file to public folder
+            $file->move('../public/uploads/'.$folder_name,$newName);
+
+        }
+        return $newName;
+    }
+
     public function student(){
         $page_data['path'] = $this->request->getPath();
 
@@ -75,6 +95,8 @@ class Create extends Controller
             if($this->check_valid_reg() === 1)
                 return $this->response->redirect(base_url().'/create/student?result=failed&_id='.$this->request->getPost('student_id'));
             $this->check_session();
+
+            $avatar_name = $this->studentAvatar();
             
 
             $student_model->save([
@@ -90,6 +112,7 @@ class Create extends Controller
             'blood_group' => $this->request->getPost('blood_group'),
             'religion' => $this->request->getPost('religion'),
             'birthday' => $this->request->getPost('birthday'),
+            'profileUrl' => $avatar_name
         ]);
         return $this->response->redirect(base_url().'/create/student?result=success&_id='.$this->request->getPost('student_id'));
 
@@ -147,19 +170,7 @@ class Create extends Controller
 
     }
 
-    public function studentAvatar(){
-        // handle student file upload
-        $file = $this->request->getFile('avatar');
-        $newName = $file->getRandomName();
-        $folder_name = 'student-avatar';
 
-        if ($file->isValid() && ! $file->hasMoved())
-        {
-            $file->move(WRITEPATH.$folder_name, $newName);
-
-        }
-        return $newName;
-    }
 
     public function notice(){
         // validation

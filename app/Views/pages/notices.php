@@ -52,12 +52,15 @@
 
                         <?php foreach($all_notices as $row): ?>
                         <div class="col mb-4">
-                            <div class="text-grey">
-                                16, May 2021
+                            <h6 class="mb-1 text-dark text-uppercase"><?php echo $row['title'] ?></h6>
+                            <div class="text-grey small">
+                               Posted on <?php echo $row['created_at'] ?>
                             </div>
                             <div class="row justify-content-between align-items-center text-md">
-                                <div class="col-4 text-primary"><?php echo $row['posted_by'] ?></div> 
-                                <div class="col-8 text-grey">5 min ago</div>
+                                <div class="col-4 small"> 
+                                    <span>created by</span> 
+                                    <span class="text-primary"><?php echo $row['posted_by'] ?></span>
+                                </div> 
                             </div>
                             <div class="mt-2">
                                 <?php echo $row['body'] ?>

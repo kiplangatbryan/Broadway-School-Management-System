@@ -36,12 +36,12 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="full_name"><strong>Full Name</strong></label><input class="form-control" type="text" id="full_name" placeholder="full name" name="full_name"></div>
+                                    <div class="mb-3"><label class="form-label" for="full_name"><strong>Full Name</strong></label><input class="form-control" type="text" id="full_name" placeholder="" name="full_name"></div>
                                 </div>                                        
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="regNo"><strong>Registration No</strong></label><input class="form-control" type="text" id="regNo" placeholder="12345" name="student_id"></div>
+                                    <div class="mb-3"><label class="form-label" for="regNo"><strong>Registration No</strong></label><input class="form-control" type="text" id="regNo" placeholder="" name="student_id"></div>
                                 </div>
                                 <div class="col">
                                     <div class="mb-3"><label class="form-label" for="class_opt"><strong>class</strong></label>
@@ -82,7 +82,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="mb-3"><label class="form-label" for="birthday"><strong>Select Birthday</strong></label><input class="form-control" type="date" id="birthday" placeholder="full name" name="birthday"></div>
+                                    <div class="mb-3"><label class="form-label" for="birthday"><strong>Select Birthday</strong></label><input class="form-control" type="date" id="birthday" placeholder="" name="birthday"></div>
                                 </div> 
                                 <div class="col">
                                     <div class="mb-3"><label class="form-label" for="religion"><strong>Religion</strong></label>
@@ -114,18 +114,18 @@
                     
                             <div class="row">
                                 <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Fathers' Name</strong></label><input class="form-control" type="text" id="father_name" placeholder="John Doe" name="fathers_name"></div>
+                                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Fathers' Name</strong></label><input class="form-control" type="text" id="father_name" placeholder="" name="fathers_name"></div>
                                 </div>
                                 <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Mothers' Name</strong></label><input class="form-control" type="text" id="mother_name" placeholder="Jane Doe" name="mothers_name"></div>
+                                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Mothers' Name</strong></label><input class="form-control" type="text" id="mother_name" placeholder="" name="mothers_name"></div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for="email"><strong>Parent Email</strong></label><input class="form-control" type="email" id="email" placeholder="user@example.com" name="email"></div>
+                                <div class="mb-3"><label class="form-label" for="email"><strong>Parent Email</strong></label><input class="form-control" type="email" id="email" placeholder="" name="email"></div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="parent_phone"><strong>Parent Phone</strong></label><input class="form-control" type="tel" id="parent_phone" placeholder="Phone number" name="parent_phone"></div>
+                                    <div class="mb-3"><label class="form-label" for="parent_phone"><strong>Parent Phone</strong></label><input class="form-control" type="tel" id="parent_phone" placeholder="" name="parent_phone"></div>
                                 </div>
                                 <div class="col">
                                     <div class="mb-3"><label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" id="address" placeholder="Sunset Blvd, 38" name="address"></div>
