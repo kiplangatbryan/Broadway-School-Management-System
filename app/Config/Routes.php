@@ -34,15 +34,21 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/login', 'login::index');
-$routes->get('/admin/dashboard', 'admin::dashboard');
-$routes->get('/admin/(:segment)', 'admin::view/$1');
-$routes->get('/admin/(:alpha)/profile/(:alphanum)', 'admin::display/$1/$2');
 
-$routes->get('/student/dashboard', 'student::dashboard');
-$routes->get('/student/(:segment)', 'student::view/$1');
+$routes->group('', ['filter'=>'AdminCheck'], function($routes){
+	$routes->get('/admin/dashboard', 'admin::dashboard');
+	$routes->get('/admin/(:segment)', 'admin::view/$1');
+	$routes->get('/admin/(:alpha)/profile/(:alphanum)', 'admin::display/$1/$2');
+});
+$routes->group('', ['filter'=>'StudentCheck'], function($routes){
+	$routes->get('/student/dashboard', 'student::dashboard');
+	$routes->get('/student/(:segment)', 'student::view/$1');
+});
 
-$routes->get('/teacher/dashboard', 'teacher::dashboard');
-$routes->get('/teacher/(:segment)', 'teacher::view/$1');
+$routes->group('', ['filter'=>'TeacherCheck'], function($routes){
+	$routes->get('/teacher/dashboard', 'teacher::dashboard');
+	$routes->get('/teacher/(:segment)', 'teacher::view/$1');
+});
 
 
 

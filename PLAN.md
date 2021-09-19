@@ -6,11 +6,13 @@ create a file for it plus logic
 
 <!-- display photos --> checked
 
-<!-- apply route filters -->
+<!-- apply route filters --> failed
+
 <!-- upload pdf files -->
+
 <!-- create pdf files -->
 
-<!-- phoenex field to be added -->
+<!-- phoenex field to be added --> checked
 
 <!-- update the events page -->
 

@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                                <table class="table my-0 bri__fix" id="dataTable">
+                                <table class="table my-0 table-hover bri__fix" id="dataTable">
                                     <thead>
                                         <tr>
                                             <th>Roll</th>

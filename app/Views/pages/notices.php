@@ -22,17 +22,32 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="title"><strong>Title</strong></label><input class="form-control" type="text" id="title" placeholder="" name="title"></div>
+                                    <div class="mb-3 form-group">
+                                        <label class="form-label" for="title">
+                                            <strong>Title</strong>
+                                        </label>
+                                        <input class="form-control" type="text" id="title" placeholder="" name="title">
+                                    </div>
                                 </div>                                        
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="details"><strong>Body</strong></label><input class="form-control" type="text" id="details" placeholder="" name="body"></div>
+                                    <div class="mb-3 form-group">
+                                        <label class="form-label" for="details">
+                                            <strong>Body</strong>
+                                        </label>
+                                        <input class="form-control" type="text" id="details" placeholder="" name="body">
+                                    </div>
                                 </div>                                        
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="details"><strong>Posted By</strong></label><input class="form-control" type="text" id="postedBy" placeholder="" name="posted_by"></div>
+                                    <div class="mb-3 form-group">
+                                        <label class="form-label" for="details">
+                                            <strong>Posted By</strong>
+                                        </label>
+                                        <input class="form-control" type="text" id="postedBy" placeholder="" name="posted_by">
+                                    </div>
                                 </div>                                        
                             </div>
                           
@@ -52,7 +67,7 @@
 
                         <?php foreach($all_notices as $row): ?>
                         <div class="col mb-4">
-                            <h6 class="mb-1 text-dark text-uppercase"><?php echo $row['title'] ?></h6>
+                            <h4 class="mb-1 text-primary fw-bold"><?php echo $row['title'] ?></h4>
                             <div class="text-grey small">
                                Posted on <?php echo $row['created_at'] ?>
                             </div>
@@ -66,7 +81,7 @@
                                 <?php echo $row['body'] ?>
                             </div>
                         </div>
-
+                        <hr>
                         <?php endforeach; ?>
                     </div>
                 </div>

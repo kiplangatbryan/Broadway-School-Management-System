@@ -21,23 +21,28 @@
                                         echo "<div class='my-3 alert alert-info  small'>To Access the system for the first time, use your <u> Email </u> and <u> `teacher` as your password</u> for your account </div>";
                                         }
                                     ?>
-                                    <div class="text-center">
-                                        <h4 class="text-dark mb-4">Welcome Back!</h4>
+                                    <div class="text-left">
+                                        <div class="text-dark mb-4" style="font-size: 23px">Welcome Back ! ◘</div>
                                         <?php if ($errors) echo "<div class='my-3 text-danger small'>Please Enter Correct Email or Password</div>" ?>
                                     </div>
                                     <form class="user" method='post', action='/login/<?php echo $login_type; ?>'>
                                       <?= csrf_field() ?>
-                                        <div class="mb-3">
-                                            <input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email">
+                                        <div class="mb-3 form-group">
+                                            <label for="emailId" class="mb-1 text-dark">Email ID</label>
+                                            <input class="form-control" type="email" id="emailId" aria-describedby="emailHelp" placeholder="Email" name="email">
                                         </div>
-                                        <div class="mb-3">
-                                            <input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password">
+                                        <div class="mb-3 form-group">
+                                            <label for="passwd" class="mb-1 text-dark">Pasword</label>
+                                            <input class="form-control" type="password" id="passwd" placeholder="password" name="password">
                                         </div>
-                                        <div class="mb-3">
+                                        <div class="mb-3 form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
                                             </div>
-                                        </div><button class="btn btn-primary d-block btn-user w-100" type="submit">Login</button>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-primary d-block  w-100" type="submit">Login</button>
+                                        </div>
 
                                         <hr>
                                     </form>
