@@ -10,19 +10,17 @@ use App\Models\Tutor;
 class Login extends Controller
 
 {
-    
     private $validationRules = [
         'email' => ['label' => 'email', 'rules' => 'required|valid_email'],
-        'password' => ['label' => 'password', 'rules' => 'required|min_length[3]']
+        'password' => ['label' => 'password', 'rules' => 'required|min_length[5]']
     ];
 
     public function check_session(){
-        $session = session();
-        if (isset($session->get('user_data')['admin_login']))
+        if (isset(session()->get('user_data')['admin_login']))
             $this->response->redirect(base_url() . '/admin/dashboard'); 
-        if (isset($session->get('user_data')['teacher_login']))
+        if (isset(session()->get('user_data')['teacher_login']))
             $this->response->redirect(base_url() . '/teacher/dashboard'); 
-        if (isset($session->get('user_data')['student_login']))
+        if (isset(session()->get('user_data')['student_login']))
             $this->response->redirect(base_url() . '/student/dashboard'); 
         else 
             $this->response->redirect(base_url() . '/backend');
@@ -49,8 +47,7 @@ class Login extends Controller
             return 0;
         }
         if ($response['password'] == 'default_pass'){
-            $session = session();
-            $session->set('user_data', ['first_login' => 1]);
+            session()->set('user_data', ['first_login' => 1]);
         }
         return 'default_pass' ==  $this->request->getPost('password') ?  $response : 0;
 
@@ -65,8 +62,7 @@ class Login extends Controller
             return 0;
         }
         if ($response['password'] == 'default_pass'){
-            $session = session();
-            $session->set('user_data', ['first_login' => 1]);
+            session()->set('user_data', ['first_login' => 1]);
         }
         return 'teacher' ==  $this->request->getPost('password') ?  $response : 0;
 
@@ -98,8 +94,7 @@ class Login extends Controller
                 'name' => $status['name'],
                 'admin_login' => 1
             ];
-            $session = session();
-            $session->set('user_data', $user_data);
+            session()->set('user_data', $user_data);
             return $this->response->redirect(base_url().'/admin/dashboard', 'refresh');   
         }
        if( $this->validator == null)
@@ -123,11 +118,8 @@ class Login extends Controller
             }
 
             $status_dt['teacher_login'] = 1; 
-
-
             // set session here
-            $session = session();
-            $session->set('user_data', $status_dt);
+            session()->set('user_data', $status_dt);
             return $this->response->redirect(base_url().'/teacher/dashboard', 'refresh');   
         }
        if( $this->validator == null)
@@ -153,10 +145,7 @@ class Login extends Controller
             // set session here
             // unset($status['code']);
             $status_dt['student_login'] = 1; 
-
-
-            $session = session();
-            $session->set('user_data', $status_dt);
+            session()->set('user_data', $status_dt);
             return $this->response->redirect(base_url().'/student/dashboard', 'refresh');   
         }
        if( $this->validator == null)
@@ -181,8 +170,7 @@ class Login extends Controller
 
       public function deauth(){
         // delete session created
-        $session = session();
-        $session->remove('user_data');
+        session()->remove('user_data');
 
         return $this->response->redirect(base_url().'/login');
 

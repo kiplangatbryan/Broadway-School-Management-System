@@ -6,14 +6,15 @@ use CodeIgniter\Controller;
 use App\Models\Learner;
 use App\Models\Tutor;
 use App\Models\Subject;
+use App\Models\Notice;
+
 
 
 class Admin extends Controller
 {
     public function check_session(){
         // check valid session
-        $session = session();
-        if (!isset($session->get('user_data')['admin_login']))
+        if (!isset(session()->get('user_data')['admin_login']))
             return $this->response->redirect(base_url() . '/login'); 
     }
 
@@ -44,14 +45,16 @@ class Admin extends Controller
             throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
         }
         $student_model = new Learner();
-        $teacher_model = new Teacher();
+        $teacher_model = new Tutor();
         $subject_model =  new Subject();
+        $notice_model =  new Notice();
+
 
         $page_data['path'] = $this->request->getPath();
         $page_data['all_students'] = $page == 'students' ? $student_model->get_students(): "";
         $page_data['all_teachers'] = $page == 'teachers' ? $teacher_model->get_teachers(): "";
         $page_data['all_subjects'] = $page == 'subjects' ? $subject_model->get_subjects(): "";
-
+        $page_data['all_notices'] = $page == 'notices' ? $notice_model->get_notices(): "";
 
 
         $this->check_session();

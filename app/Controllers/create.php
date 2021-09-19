@@ -5,6 +5,8 @@ use CodeIgniter\Controller;
 use App\Models\Learner;
 use App\Models\Subject;
 use App\Models\Tutor;
+use App\Models\Notice;
+
 
 use Hidehalo\Nanoid\Client;
 use Hidehalo\Nanoid\GeneratorInterface;
@@ -157,6 +159,18 @@ class Create extends Controller
 
         }
         return $newName;
+    }
+
+    public function notice(){
+        // validation
+        // save
+        if($this->request->getMethod() == 'post'){
+            $notice_model = new Notice();
+
+            $notice_model->save($this->request->getPost());
+
+            $this->response->redirect(base_url().'/admin/notices/');
+        }
     }
   
 
