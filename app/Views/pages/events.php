@@ -2,6 +2,10 @@
 <?php include(APPPATH.'Views/templates/lunar-css.php'); ?>
 
 
+<script>
+    // to be used later in the script
+    const base_url = "<?php echo base_url() ?>"
+</script>
 
 <div class="container-fluid">
     <div class="d-sm-flex justify-content-between align-items-center mb-4">
@@ -33,39 +37,5 @@
 </div>
                
 
- <script>
-
-document.addEventListener('DOMContentLoaded', function() {
-var calendarEl = document.getElementById('calendar');
-var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
-    initialDate: '2021-09-19',
-    headerToolbar: {
-        left: 'prev, next, today',
-        center: 'title',
-        right: 'dayGridMonth, timeGridWeek, timeGridDay'
-    },
-    events: [
-    {
-        title: 'All day event',
-        start: '2021-09-22'
-    },
-    {
-        title: 'Long Event',
-        start: '2021-09-27',
-        end: '2021-09-29'
-    },
-    {
-        title: 'All day event',
-        start: '2021-09-22T16:30:00',
-
-    }
-]
-});
-calendar.render();
-});
-
-</script>
-
-<?php include(APPPATH.'Views/templates/lunar-scripts.php'); ?>◘◘
+<?php include(APPPATH.'Views/templates/lunar-scripts.php'); ?>
 <?php include(APPPATH.'Views/templates/footer-section.php'); ?>

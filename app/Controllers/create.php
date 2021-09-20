@@ -182,7 +182,6 @@ class Create extends Controller
 
             $this->response->redirect(base_url().'/admin/notices');
         }
-    }
-  
+    } 
 
 }

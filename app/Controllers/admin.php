@@ -11,7 +11,7 @@ use App\Models\Notice;
 class Admin extends Controller
 {
     
-    public  function dashboard()
+    public function dashboard()
     {  
         $student_model = new Learner();
         $teacher_model = new Tutor();
