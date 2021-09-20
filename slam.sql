@@ -138,7 +138,8 @@ CREATE TABLE `notices` (
   `posted_by` longtext NOT NULL,
   `title` longtext NOT NULL,
   `body` longtext NOT NULL,
-  `created_at` date DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`notice_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -149,7 +150,7 @@ CREATE TABLE `notices` (
 
 LOCK TABLES `notices` WRITE;
 /*!40000 ALTER TABLE `notices` DISABLE KEYS */;
-INSERT INTO `notices` VALUES (1,'jeniffer sotik','happy hour','Things have been easy since the school sms is up, thanks yoh!','2021-09-19'),(2,'jon jag','session start','We will have the first ever NBA march-up against the cavaliers in the coming days, it will be a blood bath','2021-09-19'),(3,'sentry','session start','We will have the first ever NBA march-up against the cavaliers in the coming days, it will be a blood bath','2021-09-19');
+INSERT INTO `notices` VALUES (1,'jeniffer sotik','happy hour','Things have been easy since the school sms is up, thanks yoh!','', '');
 /*!40000 ALTER TABLE `notices` ENABLE KEYS */;
 UNLOCK TABLES;
 

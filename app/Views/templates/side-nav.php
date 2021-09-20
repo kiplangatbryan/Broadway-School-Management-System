@@ -62,6 +62,7 @@
                         </div>
                     </li>
                     <li class="nav-item"><a class="nav-link <?php if($path === 'admin/subjects') echo 'active' ?>" href="/admin/subjects"><i class="fa fa-copy"></i><span>&nbsp;Subjects</span></a></li>
+                    <li class="nav-item"><a class="nav-link <?php if($path === 'admin/schedule') echo 'active' ?>" href="/admin/schedule"><i class="fa fa-copy"></i><span>&nbsp;Schedule(TT)</span></a></li>
                     <li class="nav-item"><a class="nav-link <?php if($path === 'admin/notices') echo 'active' ?>" href="/admin/notices"><i class="fas fa-file-alt"></i><span>&nbsp;Notices</span></a></li>
                     <li class="nav-item"><a class="nav-link <?php if($path === 'admin/messages') echo 'active' ?>" href="/admin/messages"><i class="fas fa-envelope"></i><span>&nbsp;Messages</span></a></li>
 
