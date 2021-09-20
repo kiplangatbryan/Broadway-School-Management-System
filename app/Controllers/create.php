@@ -180,7 +180,7 @@ class Create extends Controller
 
             $notice_model->save($this->request->getPost());
 
-            $this->response->redirect(base_url().'/admin/notices/');
+            $this->response->redirect(base_url().'/admin/notices');
         }
     }
   

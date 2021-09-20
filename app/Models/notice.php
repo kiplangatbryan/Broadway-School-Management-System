@@ -18,7 +18,7 @@ class Notice extends Model
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
-    // protected $updatedField  = 'updated_at';
+    protected $updatedField  = 'updated_at';
 
     protected $validationRules    = [];
     protected $validationMessages = [];
@@ -27,7 +27,7 @@ class Notice extends Model
     protected $DBGroup = 'default';
 
     public function get_notices(){
-        return $this->findAll();
+        return $this->orderBy('notice_id', 'desc')->findAll();
     }
 }
 

@@ -34,9 +34,9 @@
                                 <div class="col">
                                     <div class="mb-3 form-group">
                                         <label class="form-label" for="details">
-                                            <strong>Body</strong>
+                                            <strong>Message</strong>
                                         </label>
-                                        <input class="form-control" type="text" id="details" placeholder="" name="body">
+                                        <textarea class="form-control" id="body_data" rows="4" name="body"></textarea>
                                     </div>
                                 </div>                                        
                             </div>
@@ -67,13 +67,25 @@
 
                         <?php foreach($all_notices as $row): ?>
                         <div class="col mb-4">
-                            <h4 class="mb-1 text-primary fw-bold"><?php echo $row['title'] ?></h4>
+                            <div class="d-sm-flex justify-content-between align-items-center">
+                                <h4 class="mb-1 text-dark fw-bold"><?php echo $row['title'] ?></h4>
+                                <div class="actions">
+                                    <button id='edit' class="mr-1">
+                                        <span>Edit</span>
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                     <button id='edit' class="mr-1">
+                                        <span>Remove</span>
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
                             <div class="text-grey small">
-                               Posted on <?php echo $row['created_at'] ?>
+                               <i>Posted on <?php echo $row['created_at'] ?></i>
                             </div>
                             <div class="row justify-content-between align-items-center text-md">
                                 <div class="col-4 small"> 
-                                    <span>created by</span> 
+                                    <i>created by</i> 
                                     <span class="text-primary"><?php echo $row['posted_by'] ?></span>
                                 </div> 
                             </div>
