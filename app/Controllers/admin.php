@@ -39,8 +39,14 @@ class Admin extends Controller
 
 
         $page_data['path'] = $this->request->getPath();
-        $page_data['all_students'] = $page == 'students' ? $student_model->get_students(): "";
-        $page_data['all_teachers'] = $page == 'teachers' ? $teacher_model->get_teachers(): "";
+
+        if ($page === 'students')
+            $page_data['all_students'] = $student_model->paginate(5);
+            $page_data['pager'] = $student_model->pager;
+        if ($page === 'teachers')
+            $page_data['all_teachers'] = $student_model->paginate(5);
+            $page_data['pager'] = $student_model->pager;
+
         $page_data['all_subjects'] = $page == 'subjects' ? $subject_model->get_subjects(): "";
         $page_data['all_notices'] = $page == 'notices' ? $notice_model->get_notices(): "";
 
@@ -54,6 +60,8 @@ class Admin extends Controller
 
             if ($view === 'student'){
                 $student_model = new Learner();
+                $page_count = 10
+                
                 $page_data['profile'] = $student_model->where('student_id', $id)->first();
                 $page_data['view_page'] = 'student_profile'; 
             }
@@ -74,5 +82,6 @@ class Admin extends Controller
         }
 
     }
+   
  
 }
