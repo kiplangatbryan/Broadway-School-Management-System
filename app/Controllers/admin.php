@@ -60,7 +60,6 @@ class Admin extends Controller
 
             if ($view === 'student'){
                 $student_model = new Learner();
-                $page_count = 10
                 
                 $page_data['profile'] = $student_model->where('student_id', $id)->first();
                 $page_data['view_page'] = 'student_profile'; 
