@@ -73,13 +73,6 @@
                                 </div>
                                
                                 <?php include(APPPATH.'Views/templates/pagination.php'); ?>
-
-
-                                <div class="col-md-6">
-                                    <?php foreach(get_class_methods($pager) as $method):  ?>
-                                        <div> <?php echo $method ?></div> 
-                                    <?php endforeach; ?> 
-                                </div>
                             </div>
                         </div>
                     </div>

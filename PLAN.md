@@ -8,12 +8,12 @@ create a file for it plus logic
 
 <!-- apply route filters --> failed
 
-<!-- upload pdf files -->
+<!-- upload pdf files --> checked
 
 <!-- create pdf files -->
 
 <!-- phoenex field to be added --> checked
 
-<!-- update the events page -->
+<!-- update the events page -->  checked
 
-<!-- activate pagination -->
+<!-- activate pagination --> checked
