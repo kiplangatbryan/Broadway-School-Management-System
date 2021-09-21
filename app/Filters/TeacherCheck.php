@@ -18,6 +18,6 @@ class TeacherCheck implements FilterInterface
     {
         // Do something here
             if (!isset(session()->get('user_data')['teacher_login']))
-            return $response->redirect(base_url().'/teacher/login'); 
+                return redirect->to('/teacher/login')->with('fail', 'You have to login first!'); 
     }
 }

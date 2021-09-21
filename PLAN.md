@@ -17,3 +17,9 @@ create a file for it plus logic
 <!-- update the events page -->  checked
 
 <!-- activate pagination --> checked
+
+<!-- create a message ui -->
+
+<!-- implement messaging -->
+
+<!-- implement alerts -->

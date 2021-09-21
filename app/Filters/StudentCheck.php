@@ -12,7 +12,7 @@ class StudentCheck implements FilterInterface
     {
         // Do something here
         if (!isset(session()->get('user_data')['student_login']))
-            return redirect()->to('/student/login')->with('fail', 'You must be  loggedIn!'); 
+            return redirect()->to('/login/student')->with('fail', 'You must be  loggedIn!'); 
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
