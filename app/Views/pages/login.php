@@ -18,8 +18,13 @@
                                             echo "<div class='my-3 alert alert-info  small'>To Access the system for the first time, use your <u>Parent Email or admission No as Username</u> and <u>admission Number as your password</u> for your account </div>";
                                         }
                                         if($login_type == 'teacher'){
-                                        echo "<div class='my-3 alert alert-info  small'>To Access the system for the first time, use your <u> Email </u> and <u> `teacher` as your password</u> for your account </div>";
+                                            echo "<div class='my-3 alert alert-info  small'>To Access the system for the first time, use your <u> Email </u> and <u> `teacher` as your password</u> for your account </div>";
                                         }
+
+                                        if (!empty(session()->getFlashData('fail'))){
+                                            echo "<div class='my-3 alert alert-danger  small'>Trying to access  restricted resource</div>";
+                                        }
+                                        
                                     ?>
                                     <div class="text-left">
                                         <div class="text-dark mb-4" style="font-size: 23px">Welcome Back ! ◘</div>
