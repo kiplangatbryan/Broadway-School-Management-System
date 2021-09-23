@@ -1,7 +1,8 @@
+<?php include(APPPATH.'Views/templates/header-common.php'); ?>
 <?php include(APPPATH.'Views/templates/side-nav.php'); ?>
 
 
-<?php ?>
+
 <style>
  .custom-bg{
      background: linear-gradient(-45deg, rgba(0,0,0,.1), transparent), url("<?=base_url().'/assets/svgs/app.svg' ?>");
@@ -26,12 +27,8 @@
 
     <!-- success shows up here -->
     <?php if (!empty(session()->getFlashData('success'))): ?>
-        <div class="alert alert-success">
-            <?=session()->getFlashData('success') ?>
-        </div>
+        <?php include(APPPATH.'Views/modals/success-popup.php'); ?>
     <?php endif ?>
-
-    
 
     <div class="row mb-4 custom-bg py-4">
         <div class="col-lg-4">  
@@ -220,4 +217,19 @@
 </div>
 
 
-<?php include(APPPATH.'Views/templates/footer-section.php'); ?>
+<script>
+    
+    setTimeout(function () {
+        $(".modal:not(.auto-off)").modal("show");
+    },200);
+    
+
+
+    $.('#successClose').click(function () {
+        $(".modal:not(.auto-off)").modal("hide");
+    });
+
+</script>
+<?php include(APPPATH.'Views/templates/scripts.php'); ?>
+<?php include(APPPATH.'Views/templates/footer.php'); ?>
+
