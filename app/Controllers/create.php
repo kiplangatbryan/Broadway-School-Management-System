@@ -6,6 +6,7 @@ use App\Models\Learner;
 use App\Models\Subject;
 use App\Models\Tutor;
 use App\Models\Notice;
+use App\Models\Settings;
 
 
 use Hidehalo\Nanoid\Client;
@@ -33,7 +34,7 @@ class Create extends Controller
         'address' => ['label' => 'address', 'rules' => 'required'],
     ];
 
-    public function generateID(){
+    private function generateID(){
         // check if an id is present else generate a new one
         $client = new Client();
         # more safer random generator
@@ -182,6 +183,19 @@ class Create extends Controller
 
             $this->response->redirect(base_url().'/admin/notices');
         }
-    } 
+    }
+    public function update_credentials(){
+        // take the request
+        $settings_model = new Settings();
+
+        // validate the credentials
+        if ($this->request->getMethod() == 'post'){
+            $settings_model->update(1, $this->request->getPost());
+            return redirect()->to('admin/settings')->with('success', 'Credentials Successfully Updated 👏😒🤞🤞🤞�');
+        }
+
+        return redirect()->back();
+
+    }
 
 }

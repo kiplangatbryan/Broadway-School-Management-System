@@ -7,9 +7,13 @@ use App\Models\Learner;
 use App\Models\Tutor;
 use App\Models\Subject;
 use App\Models\Notice;
+use App\Models\Classes;
+use App\Models\Settings;
+
 
 class Admin extends Controller
 {
+   
     
     public function dashboard()
     {  
@@ -36,6 +40,9 @@ class Admin extends Controller
         $teacher_model = new Tutor();
         $subject_model =  new Subject();
         $notice_model =  new Notice();
+        $class_model =  new Classes();
+        $config_model = new Settings();
+
 
 
         $page_data['path'] = $this->request->getPath();
@@ -49,6 +56,11 @@ class Admin extends Controller
 
         $page_data['all_subjects'] = $page == 'subjects' ? $subject_model->get_subjects(): "";
         $page_data['all_notices'] = $page == 'notices' ? $notice_model->get_notices(): "";
+
+        $page_data['all_classes'] = $page == 'schedule' ? $class_model->get_classes(): "";
+
+        $page_data['config'] = $page == 'settings' ? $config_model->get_configurations()[0]: "";
+
 
         return view('pages/'.$page, $page_data);
     }
