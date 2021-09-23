@@ -13,7 +13,7 @@ class Settings extends Model
 
     protected $primaryKey = 'settings_id';
 
-    protected $allowedFields = ['settings_id','system_name', 'system_email', 'phone','active_sms_service', 'twilio_account_sid', 'twilio_auth_token', 'twilio_sender_phone_number'];
+    protected $allowedFields = ['settings_id','system_name', 'system_email', 'skin_color', 'phone','active_sms_service', 'twilio_account_sid', 'twilio_auth_token', 'twilio_sender_phone_number'];
 
     protected $validationRules    = [];
     protected $validationMessages = [];

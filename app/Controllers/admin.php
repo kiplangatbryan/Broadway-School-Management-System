@@ -20,6 +20,11 @@ class Admin extends Controller
         $student_model = new Learner();
         $teacher_model = new Tutor();
         $subject_model = new Subject();
+        $config_model = new Settings();
+
+
+        $page_data['system_name'] = $config_model->get_configurations()[0]['system_name'];
+        $page_data['skin_color'] = $config_model->get_configurations()[0]['skin_color'];
 
         $page_data['path'] = $this->request->getPath();
         $page_data['num_students'] = count($student_model->get_students());
@@ -44,8 +49,13 @@ class Admin extends Controller
         $config_model = new Settings();
 
 
-
+        
         $page_data['path'] = $this->request->getPath();
+
+        // refactor for errors
+        $page_data['system_name'] = $config_model->get_configurations()[0]['system_name'];
+        $page_data['skin_color'] = $config_model->get_configurations()[0]['skin_color'];
+
 
         if ($page === 'students')
             $page_data['all_students'] = $student_model->paginate(5);
@@ -66,6 +76,14 @@ class Admin extends Controller
     }
     public function display($view , $id){
         // search for reg_no
+
+
+        $config_model = new Settings();
+
+
+        $page_data['system_name'] = $config_model->get_configurations()[0]['system_name'];
+        $page_data['skin_color'] = $config_model->get_configurations()[0]['skin_color'];
+        
        if ($view === 'student' || $view === 'teacher'){
             // $page_data['student_id'] = $id;
             $page_data['path'] = $this->request->getPath();

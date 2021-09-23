@@ -1,7 +1,6 @@
 <?php include(APPPATH.'Views/templates/side-nav.php'); ?>
 
 
-
 <?php ?>
 <style>
  .custom-bg{
