@@ -1,3 +1,5 @@
+<?php include(APPPATH.'Views/templates/header-common.php'); ?>
+
 <?php include(APPPATH.'Views/templates/side-nav.php'); ?>
 
                 <div class="container-fluid">
@@ -79,4 +81,4 @@
                 </div>
             </div>
 
-<?php include(APPPATH.'Views/templates/footer-section.php'); ?>
+<?php include(APPPATH.'Views/templates/footer.php'); ?>

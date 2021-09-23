@@ -64,4 +64,4 @@
 
 <script src="<?php echo base_url() ?>/assets/js/chart.min.js"></script>
 
-<?php include(APPPATH.'Views/templates/footer-section.php'); ?>
+<?php include(APPPATH.'Views/templates/footer.php'); ?>

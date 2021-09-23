@@ -113,4 +113,4 @@
         </div>
     </div>
 
-<?php include(APPPATH.'Views/templates/footer-section.php'); ?>
+<?php include(APPPATH.'Views/templates/footer.php'); ?>

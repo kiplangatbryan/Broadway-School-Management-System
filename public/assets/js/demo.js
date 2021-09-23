@@ -34,6 +34,8 @@ $('#close').click(function () {
     $(".modal:not(.auto-off)").modal("hide");
 })
 
+// by default show the success modal
+
 // (function($) {
 //     //For demo purpose adding positions to modal for preview
 

@@ -38,6 +38,12 @@ function RenderCalender(events, refresh=false) {
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         initialDate: '2021-09-19',
+        selectable: true,
+        editable: true,
+        eventLimit: true,
+        select: (start, end) => {
+            $('')
+        },
         headerToolbar: {
             left: 'prev, next, today',
             center: 'title',

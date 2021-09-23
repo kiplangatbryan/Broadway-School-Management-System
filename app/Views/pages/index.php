@@ -1,3 +1,4 @@
+<?php include(APPPATH.'Views/templates/header-common.php'); ?>
 <?php include(APPPATH.'Views/templates/side-nav.php'); ?>
                 
 
@@ -148,4 +149,5 @@
 
     </script>
 <script src="<?php echo base_url() ?>/assets/js/chart.min.js"></script>
-<?php include(APPPATH.'Views/templates/footer-section.php'); ?>
+<?php include(APPPATH.'Views/templates/scripts.php'); ?>
+<?php include(APPPATH.'Views/templates/footer.php'); ?>

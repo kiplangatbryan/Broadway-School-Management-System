@@ -2,16 +2,16 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
-class Teacher extends Model
+class Classes extends Model
 {
     // ...
     protected $table      = 'classes';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'class_id';
 
     protected $useAutoIncrement = true;
 
     protected $returnType     = 'array';
-    protected $useSoftDeletes = true;
+    // protected $useSoftDeletes = true;
 
     protected $allowedFields = ['class_id', 'name', 'teacher_id', 'prefect_id'];
 
@@ -26,8 +26,8 @@ class Teacher extends Model
 
     protected $DBGroup = 'default';
 
-    public function get_data($email){
-        return $this->where('email', $email)->first();
+    public function get_classes(){
+        return $this->findAll();
      }
 }
 

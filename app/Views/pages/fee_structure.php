@@ -1,3 +1,4 @@
+<?php include(APPPATH.'Views/templates/header-common.php'); ?>
 <?php include(APPPATH.'Views/templates/side-nav.php'); ?>
 
                 <div class="container-fluid">
@@ -7,4 +8,4 @@
                     <p class="text-center" style="padding: 3em 0;"><a class="btn btn-primary btn-icon-split" role="button"></a>No fee structure documents found, upload now!.</p><a class="btn btn-primary btn-icon-split" role="button"><span class="text-white-50 icon"><i class="fas fa-file-upload"></i></span><span class="text-white text">upload fee structure</span></a>
                 </div>
             </div>
-<?php include(APPPATH.'Views/templates/footer-section.php'); ?>
+<?php include(APPPATH.'Views/templates/footer.php'); ?>

@@ -1,16 +1,8 @@
-<?php include(APPPATH.'Views/templates/side-nav.php'); ?>
-<?php include(APPPATH.'Views/templates/lunar-css.php'); ?>
+<?php include(APPPATH.'Views/templates/header-common.php'); ?>
 
+<?php include(APPPATH.'Views/templates/side-nav.php'); ?>
     <div class="container-fluid">
-        <div class="d-sm-flex justify-content-between align-items-center mb-4">
-            <div class="text-center">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#"><span>Home</span></a></li>
-                    <li class="breadcrumb-item"><a href="#"><span>Library</span></a></li>
-                    <li class="breadcrumb-item"><a href="#"><span>Data</span></a></li>
-                </ol>
-            </div>
-        </div>
+        <?php include(APPPATH.'Views/templates/breadcrumbs.php') ?>
 
         <div class="row">
             <div class="col-md-4 mb-4">
@@ -70,12 +62,12 @@
                             <div class="d-sm-flex justify-content-between align-items-center">
                                 <h4 class="mb-1 text-dark fw-bold"><?php echo $row['title'] ?></h4>
                                 <div class="actions">
-                                    <button id='edit' class="mr-1">
-                                        <span>Edit</span>
+                                    <button data-id=<?=$row['notice_id'] ?> class="mr-1 btn btn-success btn-sm">
+                                        <!-- <span>Edit</span> -->
                                         <i class="fa fa-edit"></i>
                                     </button>
-                                     <button id='edit' class="mr-1">
-                                        <span>Remove</span>
+                                     <button id='edit' class="mr-1 btn btn-danger btn-sm">
+                                        <!-- <span>Remove</span> -->
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </div>
@@ -103,5 +95,5 @@
         
     </div>
             
-<?php include(APPPATH.'Views/templates/lunar-scripts.php'); ?>
-<?php include(APPPATH.'Views/templates/footer-section.php'); ?>
+<?php include(APPPATH.'Views/templates/scripts.php'); ?>
+<?php include(APPPATH.'Views/templates/footer.php'); ?>

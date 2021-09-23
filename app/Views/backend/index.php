@@ -1,4 +1,4 @@
-<?php include(APPPATH.'Views/templates/common-hlinks.php'); ?>
+<?php include(APPPATH.'Views/templates/header-common.php'); ?>
 <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/style.min.css">
 
 
@@ -49,4 +49,4 @@
 
 
 
-<?php include(APPPATH.'Views/templates/footer-section.php'); ?>
+<?php include(APPPATH.'Views/templates/footer.php'); ?>

@@ -23,3 +23,5 @@ create a file for it plus logic
 <!-- implement messaging -->
 
 <!-- implement alerts -->
+
+<!-- effective error handling -->

@@ -105,5 +105,5 @@
         </div>
     </div>
 
-<?php include(APPPATH.'Views/templates/lunar-scripts.php'); ?>
-<?php include(APPPATH.'Views/templates/footer-section.php'); ?>
+<?php include(APPPATH.'Views/templates/scripts.php'); ?>
+<?php include(APPPATH.'Views/templates/footer.php'); ?>

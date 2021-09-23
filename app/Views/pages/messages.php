@@ -1,59 +1,86 @@
+<?php include(APPPATH.'Views/templates/header-common.php'); ?>
+<style>
+    .messaging-box{
+        /* min-height: 500px;
+        max-height: 500px; */
+    }
+    .contact-box{
+        min-height: 400px !important;
+    }
+    .content-box{
+        min-height: 400px  !important;
+        overflow: scroll !important;
+
+    }
+    .custom-block{
+        overflow: hidden !important;
+    }
+
+</style>
 <?php include(APPPATH.'Views/templates/side-nav.php'); ?>
-<?php include(APPPATH.'Views/templates/lunar-css.php'); ?>
 
     <div class="container-fluid">
-        <div class="d-sm-flex justify-content-between align-items-center mb-4">
-            <div class="text-center">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#"><span>Home</span></a></li>
-                    <li class="breadcrumb-item"><a href="#"><span>Library</span></a></li>
-                    <li class="breadcrumb-item"><a href="#"><span>Data</span></a></li>
-                </ol>
-            </div>
-        </div>
+       <?php include(APPPATH.'Views/templates/breadcrumbs.php'); ?>
 
-        <div class="row">
-            <div class="col-lg-11 mb-4">
-                <div class="card shadow">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 fw-bold">Recent Messages</p>
+
+        <div class="row messaging-box">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header py-2">
+                        <p class="text-dark m-0 fw-bold">Messaging</p>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6 text-nowrap">
-                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
-                                    <label class="form-label">Show&nbsp;</label>
-                                        <select class="d-inline-block form-select form-select-sm">
-                                            <option value="10" selected="">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select>
-                                    </div>
+                        <form class="d-none d-sm-inline-block  me-auto ms-md-1 my-1 my-md-0 w-100 mb-4">
+                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..."><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                        </form>
+                        <div class="contact-box">
+
+                            <a class="dropdown-item d-block d-flex align-items-center w-100 custom-block py-2"  href="#">
+                                <div class="me-3">
+                                    <img class="rounded-circle" src="<?php echo base_url(); ?>/assets/img/avatars/avatar3.jpeg">
+                                    <div class="bg-warning status-indicator"></div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
+                                <div class="fw-bold">
+                                    <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
+                                    <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
                                 </div>
-                            </div>
-                            <div class="table-responsive table-dark table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                              
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 align-self-center">
-                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                            </a>
+
+                              <a class="dropdown-item d-block d-flex align-items-center w-100 custom-block py-2"  href="#">
+                                <div class="me-3">
+                                    <img class="rounded-circle" src="<?php echo base_url(); ?>/assets/img/avatars/avatar3.jpeg">
+                                    <div class="bg-warning status-indicator"></div>
                                 </div>
-                                <div class="col-md-6">
-                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                        <ul class="pagination">
-                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                        </ul>
-                                    </nav>
+                                <div class="fw-bold">
+                                    <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
+                                    <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
                                 </div>
-                            </div>
+                            </a>
+
+                              <a class="dropdown-item d-block d-flex align-items-center w-100 custom-block py-2"  href="#">
+                                <div class="me-3">
+                                    <img class="rounded-circle" src="<?php echo base_url(); ?>/assets/img/avatars/avatar3.jpeg">
+                                    <div class="bg-warning status-indicator"></div>
+                                </div>
+                                <div class="fw-bold">
+                                    <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
+                                    <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
+                                </div>
+                            </a>
+
+
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 content-box">
+                <div class="card border-radius-0 ">
+                    <div class="card-header py-2">
+                        <p class="text-dark m-0 fw-bold">Recent Messages</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="contact-box">
                         </div>
                     </div>
                 </div>
@@ -63,5 +90,5 @@
         
     </div>
             
-<?php include(APPPATH.'Views/templates/lunar-scripts.php'); ?>
-<?php include(APPPATH.'Views/templates/footer-section.php'); ?>
+<?php include(APPPATH.'Views/templates/scripts.php'); ?>
+<?php include(APPPATH.'Views/templates/footer.php'); ?>
