@@ -1,3 +1,5 @@
+<?php include(APPPATH.'Views/templates/header-common.php'); ?>
+
 <?php include(APPPATH.'Views/templates/teacher_nav.php'); ?>
                 
 
@@ -194,5 +196,7 @@
                 
         </div>
     </div>
+
+<?php include(APPPATH.'Views/templates/scripts.php'); ?>
 
 <?php include(APPPATH.'Views/templates/footer.php'); ?>

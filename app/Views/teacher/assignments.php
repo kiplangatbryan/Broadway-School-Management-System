@@ -1,5 +1,5 @@
+<?php include(APPPATH.'Views/templates/header-common.php'); ?>
 <?php include(APPPATH.'Views/templates/teacher_nav.php'); ?>
-<?php include(APPPATH.'Views/templates/lunar-css.php'); ?>
 
 
 <div class="container-fluid">
