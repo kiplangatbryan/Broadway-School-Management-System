@@ -40,7 +40,7 @@ class Create extends Controller
         # more safer random generator
         $nanoID =  $client->generateId($size = 11, $mode = Client::MODE_DYNAMIC);
         $teacher_model = new Tutor();
-         $result = $teacher_model->check_data($nanoID);
+        $result = $teacher_model->check_data($nanoID);
 
         if ($result == null ){
             return $this->generateID();
@@ -91,6 +91,13 @@ class Create extends Controller
         $page_data['path'] = $this->request->getPath();
 
         $student_model = new Learner();
+        $config_model = new Settings();
+
+
+
+        $page_data['system_name'] = $config_model->get_configurations()[0]['system_name'];
+        $page_data['skin_color'] = $config_model->get_configurations()[0]['skin_color'];
+
         if ($this->request->getMethod() == 'post' && $this->validate($this->validationRules)){ 
             
             if($this->check_valid_reg() === 1)
@@ -130,8 +137,7 @@ class Create extends Controller
     }
 
     public function teacher(){
-        $page_data['path'] = $this->request->getPath();
-
+    
         if ($this->request->getMethod() == 'post' && $this->validate($this->teacherValidation)){
             $teacher_model = new Tutor();
 
@@ -140,25 +146,49 @@ class Create extends Controller
 
             $profileImg = $this->studentAvatar();
 
+            // save credentials
             $teacher_model->save([
-            'teacher_id' => $customId,
-            'sex' =>  $this->request->getPost('sex'),   
-            'phone_number' => $this->request->getPost('phone_number'),
-            'name' => $this->request->getPost('full_name'),
-            'email' =>  $this->request->getPost('email'),
-            'address' => $this->request->getPost('address'),
-            'blood_group' => $this->request->getPost('blood_group'),
-            'country' => $this->request->getPost('country'),
-            'county' => $this->request->getPost('county'),
-            'religion' => $this->request->getPost('religion'),
-            'birthday' => $this->request->getPost('birthday'),
-            'profileUrl' => $profileImg
-        ]);
+                'teacher_id' => $customId,
+                'sex' =>  $this->request->getPost('sex'),   
+                'phone_number' => $this->request->getPost('phone_number'),
+                'name' => $this->request->getPost('full_name'),
+                'email' =>  $this->request->getPost('email'),
+                'address' => $this->request->getPost('address'),
+                'blood_group' => $this->request->getPost('blood_group'),
+                'country' => $this->request->getPost('country'),
+                'county' => $this->request->getPost('county'),
+                'religion' => $this->request->getPost('religion'),
+                'birthday' => $this->request->getPost('birthday'),
+                'profileUrl' => $profileImg
+            ]);
+            // save subjects
+           
+            $db = db_connect();
+
+            $pQuery = $db->prepare(function($db)
+            {
+                return $db->table('subjectteacher')
+                        ->insert([
+                            'subjec_id'    => 'x',
+                            'teacher_id'   => 'y',
+                        ]);
+            });
+            // $results = $pQuery->execute(,$teacher_model->getInsertId());
+
+            $pQuery->close();
+
+
         return $this->response->redirect(base_url().'/create/teacher?result=success&_id='.$customId);
 
         }
+        $page_data['path'] = $this->request->getPath();
+
+        $config_model = new Settings();
         $subject_model =  new Subject();
+
         $page_data['all_subjects'] = $subject_model->get_subjects();
+        $page_data['system_name'] = $config_model->get_configurations()[0]['system_name'];
+        $page_data['skin_color'] = $config_model->get_configurations()[0]['skin_color'];
 
         if( $this->validator == null)
             $page_data['errors'] = '';

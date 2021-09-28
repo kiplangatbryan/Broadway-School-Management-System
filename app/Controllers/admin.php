@@ -58,11 +58,11 @@ class Admin extends Controller
 
 
         if ($page === 'students')
-            $page_data['all_students'] = $student_model->paginate(5);
+            $page_data['all_students'] = $student_model->paginate(10);
             $page_data['pager'] = $student_model->pager;
         if ($page === 'teachers')
-            $page_data['all_teachers'] = $student_model->paginate(5);
-            $page_data['pager'] = $student_model->pager;
+            $page_data['all_teachers'] = $teacher_model->paginate(10);
+            $page_data['pager'] = $teacher_model->pager;
 
         $page_data['all_subjects'] = $page == 'subjects' ? $subject_model->get_subjects(): "";
         $page_data['all_notices'] = $page == 'notices' ? $notice_model->get_notices(): "";
