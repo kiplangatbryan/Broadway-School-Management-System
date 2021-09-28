@@ -6,16 +6,15 @@ class Assignments extends Model
 {
     // ...
     protected $table      = 'assignments';
-    protected $primaryKey = 'assignment_id';
+    protected $primaryKey = 'id';
 
-    protected $useAutoIncrement = true;
 
     protected $returnType     = 'array';
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['assignment_id', 'description', 'teacher_id', 'subject_id', 'class_id', 'fileID', 'due_date','created_at', 'updated_at'];
+    protected $allowedFields = ['assignment_id', 'title', 'description', 'teacher_id', 'subject_id', 'class_id', 'fileID', 'due_date','created_at', 'updated_at'];
 
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
@@ -27,7 +26,15 @@ class Assignments extends Model
 
     public function get_assignments($key){
         return $this->where('teacher_id', $key)->findAll();
+    }
+
+    public function st_assignments($key){
+        return $this->where('class_id', $key)->findAll();
      }
+
+    public function check_id($key){
+        return $this->where('assignment_id', $key);
+    }
 }
 
 ?>
