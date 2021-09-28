@@ -1,3 +1,5 @@
+<?php include(APPPATH.'Views/templates/header-common.php'); ?>
+
 <?php include(APPPATH.'Views/templates/student_nav.php'); ?>
                 
 
@@ -7,12 +9,12 @@
 </div>
 <div class="row">
     <div class="col-md-6 col-xl-3 mb-4">
-        <div class="card shadow border-start-primary py-2">
+        <div class="card  border-start-primary py-2">
             <div class="card-body">
                 <div class="row align-items-center no-gutters">
                     <div class="col me-2">
                         <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>PENDING ASSINGMENTS</span></div>
-                        <div class="text-dark fw-bold h5 mb-0"><span>0</span></div>
+                        <div class="text-dark fw-bold h5 mb-0"><span><?=$num_assignments ?></span></div>
                     </div>
                     <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                 </div>
@@ -21,12 +23,12 @@
     </div>
     
     <div class="col-md-6 col-xl-3 mb-4">
-        <div class="card shadow border-start-primary py-2">
+        <div class="card  border-start-primary py-2">
             <div class="card-body">
                 <div class="row align-items-center no-gutters">
                     <div class="col me-2">
                         <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>SUBJECTS</span></div>
-                        <div class="text-dark fw-bold h5 mb-0"><span><?= esc($num_students) ?></span></div>
+                        <div class="text-dark fw-bold h5 mb-0"><span><?= esc($num_subjects) ?></span></div>
                     </div>
                     <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                 </div>
@@ -35,7 +37,7 @@
     </div>
     
     <div class="col-md-6 col-xl-3 mb-4">
-        <div class="card shadow border-start-info py-2">
+        <div class="card border-start-info py-2">
             <div class="card-body">
                 <div class="row align-items-center no-gutters">
                     <div class="col me-2">
@@ -57,7 +59,7 @@
         </div>
     </div>
     <div class="col-md-6 col-xl-3 mb-4">
-        <div class="card shadow border-start-warning py-2">
+        <div class="card  border-start-warning py-2">
             <div class="card-body">
                 <div class="row align-items-center no-gutters">
                     <div class="col me-2">
@@ -72,7 +74,7 @@
 </div>
 <div class="row">
     <div class="col-lg-6">
-        <div class="card shadow mb-4">
+        <div class="card  mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h6 class="text-primary fw-bold m-0">Profile Overview</h6>
                 <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
@@ -135,7 +137,7 @@
                             <h6 class="text-primary">
                                 Profile Picture
                             </h6>
-                            <img class="rounded-circle mb-3 mt-4" src="<?php echo base_url() ?>/assets/img/dogs/image2.jpeg" width="110" height="110">
+                            <img class="rounded-circle mb-3 mt-4" src="<?=base_url() ?>/uploads/studentAvatars/<?=session()->get('user_data')['profileUrl']?>" width="110" height="110">
 
                         </div>
                     </div>
@@ -147,7 +149,7 @@
     </div>
     <div class="col-lg-6">
         <div class="col">
-            <div class="card shadow mb-4">
+            <div class="card  mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h6 class="text-primary fw-bold m-0">Recent Activities</h6>
                     <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
@@ -158,23 +160,26 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="col">
-                        <div class="text-grey">
-                            16, May 2017
+                    <?php foreach($notices as $row): ?>
+                        <div class="col">
+                            <div class="text-dark fw-bold">
+                                <?=$row['title'] ?>
+                            </div>
+                            <div class="row justify-content-between align-items-center text-md">
+                                <div class="col-4 text-primary"><?=$row['posted_by'] ?></div> 
+                                <div class="col-8 text-grey">5 min ago</div>
+                            </div>
+                            <div class="mt-2">
+                                <?=$row['body'] ?> 
+                            </div>
                         </div>
-                        <div class="row justify-content-between align-items-center text-md">
-                            <div class="col-4 text-primary">Jeniffer Lopez</div> 
-                            <div class="col-8 text-grey">5 min ago</div>
-                        </div>
-                        <div class="mt-2">
-                            Great student management portal, i could actually pay for it 
-                        </div>
-                    </div>
+                        <hr>
+                    <?php endforeach ?>
                 </div>
             </div>
             </div>
 
-                <div class="card shadow mb-4">
+                <div class="card  mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h6 class="text-primary fw-bold m-0">Recent Exam Results</h6>
                         <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>

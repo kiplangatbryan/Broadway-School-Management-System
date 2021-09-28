@@ -36,6 +36,10 @@ class Tutor extends Model
         return $this->find($cpy);
     }
 
+     public function teacher_id($key){
+        return $this->where('teacher_id', $key)->first();
+    }
+
     public function get_teachers(){
          return $this->findAll();
     }

@@ -48,11 +48,13 @@ $routes->group('/admin', ['filter'=>'AdminCheck'], function($routes){
 $routes->group('/student', ['filter'=>'StudentCheck'], function($routes){
 	$routes->get('dashboard', 'student::dashboard');
 	$routes->get('(:segment)', 'student::view/$1');
+
 });
 
 $routes->group('/teacher', ['filter'=>'TeacherCheck'], function($routes){
 	$routes->get('dashboard', 'teacher::dashboard');
 	$routes->get('(:segment)', 'teacher::view/$1');
+	$routes->post('assignments/create', 'teacher::create');
 });
 
 

@@ -1,3 +1,4 @@
+<?php include(APPPATH.'Views/templates/header-common.php'); ?>
 <?php include(APPPATH.'Views/templates/side-nav.php'); ?>
 
 <div class="container-fluid">
@@ -112,7 +113,14 @@
                                         <?php foreach ($all_subjects as $subject): ?>
                                             <div class="col">
                                                 <div class="mb-3">
-                                                    <div class="form-check form-switch"><input class="form-check-input" type="checkbox" name="<?php echo $subject['name'] ?>" id="formCheck-1"><label class="form-check-label" for="formCheck-1"><strong><?php echo $subject['name'] ?></strong></label></div>
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" name="<?php echo $subject['name'] ?>" id="<?= $subject['name'] ?>">
+                                                        <label class="form-check-label" for="<?= $subject['name'] ?>">
+                                                            <strong>
+                                                                <small><?= $subject['name'] ?></small>
+                                                            </strong>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div> 
                                         <?php endforeach; ?>

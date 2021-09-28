@@ -172,7 +172,70 @@
 
 
 
-                <div class="card">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="text-primary fw-bold m-0">Exam settings</h6>
+                        <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                            <div class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" href="#">&nbsp;Action</a><a class="dropdown-item" href="#">&nbsp;Another action</a>
+                                <div class="dropdown-divider"></div><a class="dropdown-item" href="#">&nbsp;Something else here</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" >
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="system_name" class="form-label">
+                                    <strong>
+                                       List of exam names
+                                    </strong>
+                                    <br>
+                                    <small>
+                                        Enter a comma seperated list of exams e.g  <span class="text-primary">`cat1,cat2,exam`</span>
+                                    </small>
+                                </label>
+                                <input type="text" value='<?= $config['exams_list'] ?>' name="exams_list" id="exams_list" class="form-control">
+                              
+                         
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="text-primary fw-bold m-0">Class settings</h6>
+                        <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                            <div class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" href="#">&nbsp;Action</a><a class="dropdown-item" href="#">&nbsp;Another action</a>
+                                <div class="dropdown-divider"></div><a class="dropdown-item" href="#">&nbsp;Something else here</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" >
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="system_name" class="form-label">
+                                    <strong>
+                                       How many streams are there
+                                    </strong>
+                                    <br>
+                                    <small>
+                                        Enter the number of streams per class
+                                    </small>
+                                </label>
+
+                                <input type="number" value='<?= $config['streams'] ?>' name="streams" id="streams" class="form-control">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h6 class="text-primary fw-bold m-0">Sms Service Configuration</h6>
                         <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
@@ -205,7 +268,7 @@
                     </div>
                 </div>
 
-                <div class="mt-2">
+                <div class="">
                     <button type="submit" class="btn btn-primary">
                         Save Credentials
                     </button>
@@ -225,7 +288,7 @@
     
 
 
-    $.('#successClose').click(function () {
+    $('#successClose').click(function () {
         $(".modal:not(.auto-off)").modal("hide");
     });
 

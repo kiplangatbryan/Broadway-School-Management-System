@@ -30,6 +30,9 @@ class Subject extends Model
     public function get_subjects(){
         return $this->findAll();
     }
+    public function subject_id($key){
+        return $this->where('subject_id', $key)->first();
+    }
 }
 
 ?>
