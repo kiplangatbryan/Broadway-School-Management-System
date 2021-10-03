@@ -29,6 +29,10 @@ class Classes extends Model
     public function get_classes(){
         return $this->findAll();
      }
+
+    public function class_id($key){
+        return $this->where('class_id', $key)->first();
+     }
 }
 
 ?>
