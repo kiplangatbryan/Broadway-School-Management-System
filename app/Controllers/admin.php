@@ -9,6 +9,8 @@ use App\Models\Subject;
 use App\Models\Notice;
 use App\Models\Classes;
 use App\Models\Settings;
+use App\Models\Schedule;
+
 
 
 class Admin extends Controller
@@ -47,8 +49,7 @@ class Admin extends Controller
         $notice_model =  new Notice();
         $class_model =  new Classes();
         $config_model = new Settings();
-
-
+        $schedule_model = new Schedule();
         
         $page_data['path'] = $this->request->getPath();
 
@@ -56,13 +57,33 @@ class Admin extends Controller
         $page_data['system_name'] = $config_model->get_configurations()[0]['system_name'];
         $page_data['skin_color'] = $config_model->get_configurations()[0]['skin_color'];
 
-
-        if ($page === 'students')
+        if ($page === 'students'){
             $page_data['all_students'] = $student_model->paginate(10);
             $page_data['pager'] = $student_model->pager;
-        if ($page === 'teachers')
+          }
+        if ($page === 'teachers') {
             $page_data['all_teachers'] = $teacher_model->paginate(10);
             $page_data['pager'] = $teacher_model->pager;
+        }
+
+        if ($page === 'classes') {
+      
+            helper(['general']);
+            // fetch settings know the number of streams
+            // fetch the teacher ID 
+            // fetch the student ID
+            $page_data['classes'] = $class_model->get_classes();
+            $intermediate = $config_model->get_configurations()[0]['streams'];
+            $page_data['streams'] = $intermediate  == 'default' ? ['0']: explode(',', $intermediate); 
+            $page_data['subjects'] = $subject_model->get_subjects();
+            $page_data['teachers'] = $teacher_model->get_teachers();
+
+            $schedules = $schedule_model->fetch_schedules();    
+            $page_data['days'] =  getDaysOfWeek();
+            $page_data['schedules'] = array_map('scheduleMap', $schedules);
+            $page_data['pager'] = $class_model->pager;
+        }   
+            
 
         $page_data['all_subjects'] = $page == 'subjects' ? $subject_model->get_subjects(): "";
         $page_data['all_notices'] = $page == 'notices' ? $notice_model->get_notices(): "";
@@ -95,7 +116,7 @@ class Admin extends Controller
                 $page_data['view_page'] = 'student_profile'; 
             }
             if( $view  === 'teacher'){
-                $teacher_model = new Teacher();
+                $teacher_model = new Tutor();
                 $page_data['profile'] = $teacher_model->where('teacher_id', $id)->first();
                 $page_data['view_page'] = 'teacher_profile'; 
             }
