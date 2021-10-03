@@ -49,13 +49,6 @@ class Create extends Controller
         return $nanoID;
     }
 
-    public function check_session(){
-        // check valid session
-        $session = session();
-        if (!isset($session->get('user_data')['admin_login']))
-            return $this->response->redirect(base_url() . '/login'); 
-    }
-
     public function check_valid_reg(){
         $student_model = new Learner();
         $result = $student_model->check_id($this->request->getPost('student_id'));
@@ -67,11 +60,11 @@ class Create extends Controller
         return 0;
     }
 
-    public function studentAvatar(){
+    public function createAvatar($type_of_account){
         // handle student file upload
         $file = $this->request->getFile('avatar');
         $newName = $file->getRandomName();
-        $folder_name = 'studentAvatars';
+        $folder_name = $type_of_account == 'student' ? 'studentAvatars': 'teacherAvatars';
         
         // validate 
         $clear = $this->validate([
@@ -93,8 +86,6 @@ class Create extends Controller
         $student_model = new Learner();
         $config_model = new Settings();
 
-
-
         $page_data['system_name'] = $config_model->get_configurations()[0]['system_name'];
         $page_data['skin_color'] = $config_model->get_configurations()[0]['skin_color'];
 
@@ -102,9 +93,9 @@ class Create extends Controller
             
             if($this->check_valid_reg() === 1)
                 return $this->response->redirect(base_url().'/create/student?result=failed&_id='.$this->request->getPost('student_id'));
-            $this->check_session();
+        
 
-            $avatar_name = $this->studentAvatar();
+            $avatar_name = $this->createAvatar('student');
             
 
             $student_model->save([
@@ -130,8 +121,6 @@ class Create extends Controller
             $page_data['errors'] = '';
         else
             $page_data['errors'] = $this->validator->getErrors();
-        
-        $this->check_session();
 
         return view('/pages/create_student', $page_data);
     }
@@ -140,15 +129,14 @@ class Create extends Controller
     
         if ($this->request->getMethod() == 'post' && $this->validate($this->teacherValidation)){
             $teacher_model = new Tutor();
-
-            $this->check_session();
             $customId = $this->generateID();
 
-            $profileImg = $this->studentAvatar();
+            $profileImg = $this->createAvatar('teacher');
 
+            // return print_r($this->request->getPost());
             // save credentials
-            $teacher_model->save([
-                'teacher_id' => $customId,
+            $teacher_model->insert([
+                "hash" => $customId,
                 'sex' =>  $this->request->getPost('sex'),   
                 'phone_number' => $this->request->getPost('phone_number'),
                 'name' => $this->request->getPost('full_name'),
@@ -169,16 +157,27 @@ class Create extends Controller
             {
                 return $db->table('subjectteacher')
                         ->insert([
-                            'subjec_id'    => 'x',
+                            'subject_id'    => 'x',
                             'teacher_id'   => 'y',
                         ]);
             });
-            // $results = $pQuery->execute(,$teacher_model->getInsertId());
+            // return print_r();   
 
+            // get the number of subjects
+            $subject_model = new Subject();
+            $total_sub = count($subject_model->get_subjects());
+            $reqObject = $this->request->getPost();
+            for($i=1; $i <= $total_sub; $i++){
+                if (!empty($reqObject['typo_'.$i])){
+                    $results = $pQuery->execute($i,$teacher_model->getInsertId());
+                }
+            }
+   
             $pQuery->close();
 
+            session()->setFlashData('id', $customId);
 
-        return $this->response->redirect(base_url().'/create/teacher?result=success&_id='.$customId);
+            return redirect()->to(base_url().'/create/teacher')->with('success', 'teacher  added Successfully 👏😒🤞🤞🤞�');
 
         }
         $page_data['path'] = $this->request->getPath();
@@ -195,10 +194,20 @@ class Create extends Controller
         else
             $page_data['errors'] = $this->validator->getErrors();
 
-        $this->check_session();
+
 
         return view('/pages/create_teacher', $page_data);
 
+    }
+
+    public function subject(){
+         if($this->request->getMethod() == 'post'){
+            $subject_model = new Subject();
+
+            $subject_model->save($this->request->getPost());
+
+            return redirect()->to(base_url().'/admin/subjects')->with('success', 'subject  added Successfully 👏😒🤞🤞🤞�');
+        }
     }
 
 

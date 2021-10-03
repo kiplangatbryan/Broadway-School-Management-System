@@ -15,7 +15,7 @@ class Tutor extends Model
     protected $returnType     = 'array';
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['teacher_id',"hash", 'name', 'birthday','sex' , 'religion', 'profileUrl','blood_group','role', 'address' , 'phone', 'email', 'country', 'county','subjects'];
+    protected $allowedFields = ['teacher_id',"hash", 'name', 'birthday','sex' , 'religion', 'profileUrl','blood_group','role', 'address' , 'phone', 'email', 'country', 'county'];
 
     // protected $useTimestamps = false;
     // protected $createdField  = 'created_at';
@@ -36,7 +36,7 @@ class Tutor extends Model
         return $this->find($cpy);
     }
 
-     public function teacher_id($key){
+    public function teacher_id($key){
         return $this->where('teacher_id', $key)->first();
     }
 

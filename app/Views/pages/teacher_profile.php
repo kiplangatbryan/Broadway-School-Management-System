@@ -1,9 +1,9 @@
+<?php include(APPPATH.'Views/templates/header-common.php'); ?>
 <?php include(APPPATH.'Views/templates/side-nav.php'); ?>
-
-
 <div id="content">
     <div class="container-fluid">
         <h4 class="text-dark  mb-3">Teacher Management Panel</h4>
+        
         <div>
             <ul role="tablist" class="nav nav-tabs">
                 <li role="presentation" class="nav-item"><a role="tab" data-bs-toggle="tab" class="nav-link active" href="<?php echo base_url() ?>#exams">Overview</a></li>

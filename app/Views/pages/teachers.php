@@ -48,7 +48,7 @@
                             <?php foreach ($all_teachers as $key => $row): ?>
                                 <tr>                                    
                                     <td><?php echo '# '.$row['teacher_id'] ?></td>
-                                    <td><img class="rounded-circle me-2" width="30" height="30" src="<?php echo $row['profileUrl'] === '' ? site_url('/assets/img/avatar2.jpeg'): site_url('/uploads/studentAvatars/'.$row['profileUrl']) ?>">
+                                    <td><img class="rounded-circle me-2" width="30" height="30" src="<?php echo $row['profileUrl'] === '' ? site_url('/assets/img/avatar2.jpeg'): site_url('/uploads/teacherAvatars/'.$row['profileUrl']) ?>">
                                         <?php echo $row['name'] ?>
                                     </td>
                                     <td><?php echo $row['sex'] ?></td>
