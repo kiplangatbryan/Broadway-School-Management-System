@@ -44,8 +44,8 @@ $('#assign-submit').submit(function (e) {
     xhr.open('post', url, true)
     xhr.setRequestHeader("Content-Type", "multipart/form-data; charset=utf-8; boundary=" + Math.random().toString().substr(2))
     xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest")
-    xhr.setRequestHeader("mimeType", "mutipart/form-data")
-    xhr.setRequestHeader("Accept","mutipart/form-data")
+    xhr.setRequestHeader("mimeType", "multipart/form-data")
+    xhr.setRequestHeader("Accept","multipart/form-data")
     
     xhr.send(formdata)
 
