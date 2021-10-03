@@ -5,9 +5,9 @@
     <h4 class="text-dark mb-4">Create Teacher Profile</h4>
     <?php
 
-        if (isset($_GET['result']) && $_GET['result'] === 'success' && isset($_GET['_id'])){
+        if (!empty(session()->getFlashData('success'))){
             echo '<div class="alert alert-success d-sm-flex justify-content-between align-items-center mb-4">';
-            echo  '<div class="">Teacher profile added successfully!</div><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href='.base_url().'/admin/teacher/profile/'.$_GET["_id"].'><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;View profile</a>';
+            echo  '<div class="">Teacher profile added successfully!</div><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href='.base_url().'/admin/teacher/profile/'.session()->getFlashData('id').'><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;View profile</a>';
             echo '</div>';
         }
         if (isset($_GET['result']) && $_GET['result'] === 'failed' && isset($_GET['_id'])){
@@ -47,7 +47,7 @@
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label" for="sex"><strong>Select gender</strong></label>
                                             <select name='sex' class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                                                <option selected>default</option>
+                                                <option selected>Choose</option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                                 
@@ -58,7 +58,7 @@
                                         <div class="mb-3"><label class="form-label" for="email"><strong>Blood Group</strong></label>
                                         
                                             <select name='blood_group' class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                                                <option selected>default</option>
+                                                <option selected>Choose</option>
                                                 <option value="B">A</option>
                                                 <option value="B">B</option>
                                                 <option value="O">O</option>
@@ -83,10 +83,10 @@
                                         <div class="col">
                                         <div class="mb-3"><label class="form-label" for="religion"><strong>Religion</strong></label>
                                             <select name='religion' class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                                                <option selected>default</option>
-                                                <option value="male">christian</option>
-                                                <option value="female">Muslim</option>
-                                                <option value="female">Budhist</option>
+                                                <option selected>Choose</option>
+                                                <option value="christian">christian</option>
+                                                <option value="Muslim">Muslim</option>
+                                                <option value="Budhist">Budhist</option>
                                             </select>
                                         </div>
                                     </div>                                       
@@ -114,7 +114,7 @@
                                             <div class="col">
                                                 <div class="mb-3">
                                                     <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" name="<?php echo $subject['name'] ?>" id="<?= $subject['name'] ?>">
+                                                        <input class="form-check-input" type="checkbox" value="<?= $subject['subject_id'] ?>" name="typo_<?= $subject['subject_id'] ?>" id="<?= $subject['name'] ?>">
                                                         <label class="form-check-label" for="<?= $subject['name'] ?>">
                                                             <strong>
                                                                 <small><?= $subject['name'] ?></small>
