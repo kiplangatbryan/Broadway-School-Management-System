@@ -10,6 +10,10 @@ use App\Models\Notice;
 use App\Models\Classes;
 use App\Models\Settings;
 use App\Models\Schedule;
+use App\Models\Alerts;
+use App\Models\Messages;
+
+
 
 
 
@@ -95,6 +99,24 @@ class Admin extends Controller
 
         return view('pages/'.$page, $page_data);
     }
+    public function fetch_api($option){
+        // fetch alerts, handle alerts
+        // return json
+        if ($option == 'alerts'){
+             $data = new Alerts;
+        
+            return $this->response->setJSON($data->get_unread());
+        }
+        if($option == 'messages')
+        {
+            $data = new Messages();
+
+            return $this->response->setJSON($data->get_unread());
+        }
+
+    }
+  
+
     public function display($view , $id){
         // search for reg_no
 

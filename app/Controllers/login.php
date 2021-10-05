@@ -35,7 +35,7 @@ class Login extends Controller
         if($response == null){
             return 0;
         }
-        return $response['password'] ==  $this->request->getPost('password') ? ['code' => 1, 'name'=> $response['name']] : 0;
+        return $response['password'] ==  $this->request->getPost('password') ? $response : 0;
 
     }
     public function check_student_validity(){
@@ -84,7 +84,7 @@ class Login extends Controller
             $status = $this->check_admin_validity();
 
             // return print_r($status);
-            if($status == 0 || !isset($status['code'])){
+            if($status == 0 ){
                 $data['errors'] = 'Invalid username or password';
                 return view('pages/login', $data);
             }
@@ -92,6 +92,7 @@ class Login extends Controller
             $user_data = [
                 'email' => $this->request->getPost('email'),
                 'name' => $status['name'],
+                'hash' => $status['hash'],
                 'admin_login' => 1
             ];
             session()->set('user_data', $user_data);

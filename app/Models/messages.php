@@ -14,7 +14,7 @@ class Messages extends Model
     protected $returnType     = 'array';
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['message_id', 'body', 'to', 'from', 'read', 'deleted', 'updated_at', 'created_at'];
+    protected $allowedFields = ['message_id', 'body', 'origin','destination', 'read', 'deleted', 'updated_at', 'created_at'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
@@ -28,6 +28,9 @@ class Messages extends Model
 
     public function get_messages(){
         return $this->findAll();
+    }
+     public function get_unread(){
+        return $this->where('destination', session()->get('user_data')['hash'])->where('read', 0)->findAll();
     }
 }
 
