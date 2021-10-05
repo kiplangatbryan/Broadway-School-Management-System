@@ -41,8 +41,9 @@ $routes->get('/', function() {
 	}
 });	
 $routes->group('/admin', ['filter'=>'AdminCheck'], function($routes){
-	$routes->get('api/(:segment)', 'admin::fetch_api/$1');
+	$routes->get('dashboard', 'admin::dashboard');
 	$routes->get('(:segment)', 'admin::view/$1');
+	$routes->get('api/(:segment)', 'admin::fetch_api/$1');
 	$routes->get('(:alpha)/profile/(:alphanum)', 'admin::display/$1/$2');
 });
 $routes->group('/student', ['filter'=>'StudentCheck'], function($routes){
