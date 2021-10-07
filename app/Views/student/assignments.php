@@ -1,10 +1,7 @@
 <?php include(APPPATH.'Views/templates/header-common.php'); ?>
-
-
 <?php include(APPPATH.'Views/templates/student_nav.php'); ?>
-                
+<?php helper('general') ?>
 <script> 
-
     const base_url = "<?php echo base_url() ?>"
 </script>
 <div class="container-fluid">
@@ -67,59 +64,57 @@
             </div>
             <div class="card-body">
                 <?php foreach($assignments as $row): ?>
-                    <div class="col mt-2 custom-box mb-5">
-                        <div class="bg-primary text-white lang">
-                            <?=$row['subject'] ?>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="text-grey text-xm mt-3">
-                                    Posted on  <?=$row['created_at'] ?>
+                    <div class="row">
+                        <a class="col-md-5" href="#">
+                            <div class="col mt-2 custom-box mb-5">
+                                <div class="bg-primary text-white lang">
+                                    <?=$row['subject'] ?>
+                                </div>
+                                <div class="text-dark fw-bold text-xm mt-3">
+                                   <?=display_date($row['due_date']) ?>
                                 </div>
                                 <div class="row justify-content-between align-items-center text-md">
                                     <div>by <span class="text-primary"><?=$row['creator'] ?></span></div> 
                                 </div>
-                                <div class="row justify-content-between align-items-center text-md">
-                                    <div class="mr-2">Due on: <span class="text-info"><?=$row['due_date'] ?></span></div>
-                                  
-                                </div>
-                                <h5 class="text-primary my-2">Instructions for students</h5>
-                                <p><?=$row['description'] ?></p> 
+                                <h5 class="text-primary my-2">
+                                    <?=$row['title'] ?>
+                                </h5>
                             </div>
-                            <div class="col-md-4">
-                                <div class="card  mb-2">
-                                    <div class="card-header bg-warning">
-                                        Assignment File(s)
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="py-2">
-                                            <a  class="btn btn-primary btn-sm d-none d-sm-inline-block " role="button" href="<?=base_url('uploads/assignments/').'/'.$row['fileID'] ?>"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Download File</a>
-                                        </div>
+                        </a>
+                        <div class="col-md-7 px-5 d-none">
+                            <h5 class="text-primary my-2">Instructions for students</h5>
+                            <p><?=$row['description'] ?></p> 
+                            <div class="card  mb-2">
+                                <div class="card-header bg-warning">
+                                    Assignment File(s)
+                                </div>
+                                <div class="card-body">
+                                    <div class="py-2">
+                                        <a  class="btn btn-primary btn-sm d-none d-sm-inline-block " role="button" href="<?=base_url('uploads/assignments/').'/'.$row['fileID'] ?>"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Download File</a>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header bg-warning">
-                                        Reference Materials
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="py-2">
-                                            No reference Material added
-                                        </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header bg-warning">
+                                    Reference Materials
+                                </div>
+                                <div class="card-body">
+                                    <div class="py-2">
+                                        No reference Material added
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="card">
-                                    <div class="card-header bg-warning">
-                                       Submission box
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="py-2">
-                                            <a data-id='1' class="btn btn-outline-success btn-sm d-none d-sm-inline-block classic-id" data-assignID='<?=$row["assignment_id"] ?>'  role="button" href="#">=>&nbsp;<i class="fas fa-upload fa-sm text-white-50"></i>&nbsp;Submit Assingnment</a>
-                                            
-                                        </div>
+                            <div class="card">
+                                <div class="card-header bg-warning">
+                                    Submission box
+                                </div>
+                                <div class="card-body">
+                                    <div class="py-2">
+                                        <a data-id='1' class="btn btn-outline-success btn-sm d-none d-sm-inline-block classic-id" data-assignID='<?=$row["assignment_id"] ?>'  role="button" href="#">=>&nbsp;<i class="fas fa-upload fa-sm text-white-50"></i>&nbsp;Submit Assingnment</a>
+                                        
                                     </div>
                                 </div>
-                              
                             </div>
                         </div>
                     </div>

@@ -144,3 +144,11 @@ img {
   display: flex;
   align-items: baseline;
 }
+
+* {
+  font-family: "Trebuchet MS";
+}
+
+body {
+  background: red !important;
+}
