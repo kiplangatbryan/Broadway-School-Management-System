@@ -12,7 +12,7 @@
                     <li class="nav-item"><a class="nav-link <?php if($path === 'teacher/assignments') echo 'active' ?>" href="/teacher/assignments"><i class="fa fa-upload"></i><span>&nbsp;Assignments ME</span></a>
                     <li class="nav-item"><a class="nav-link <?php if($path === 'teacher/results') echo 'active' ?>" href="/teacher/results"><i class="fas fa-dollar-sign"></i><span>&nbsp; &nbsp;Results</span></a></li>
                     <li class="nav-item"><a class="nav-link <?php if($path === 'teacher/elibrary') echo 'active' ?>" href="/teacher/elibrary"><i class="fas fa-book"></i><span>&nbsp;E-library</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login/deauth"><i class="fa fa-sign-out"></i><span>&nbsp;Log out</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/auth/deauth"><i class="fa fa-sign-out"></i><span>&nbsp;Log out</span></a></li>
 
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
