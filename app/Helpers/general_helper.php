@@ -4,8 +4,7 @@
     use App\Models\Tutor;
     use App\Models\Classes;
     use App\Models\Teacher;
-
-
+    
     use Hidehalo\Nanoid\Client;
     use Hidehalo\Nanoid\GeneratorInterface;
 
@@ -55,8 +54,6 @@
 
         return array_merge($as, $data);
     }
-
-  
 
     function getDaysOfWeek(){
         return  [
