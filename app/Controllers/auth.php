@@ -39,7 +39,6 @@ class Auth extends Controller
             $teacher = check_teacher_validity($this->request);
             $admin = check_admin_validity($this->request);
 
-
             if($student['code'] === 1 || $teacher['code'] === 1 || $admin['code'] === 1){
                 if(!empty($student['login_type'])){
                     return redirect()->to(base_url().'/'.$student['login_type'].'/dashboard');
