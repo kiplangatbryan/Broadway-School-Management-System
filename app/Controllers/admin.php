@@ -112,6 +112,7 @@ class Admin extends Controller
 
     public function display($view , $id){
         // search for reg_no
+
         $config_model = new Settings();
         $page_data['system_name'] = $config_model->get_configurations()[0]['system_name'];
         $page_data['skin_color'] = $config_model->get_configurations()[0]['skin_color'];

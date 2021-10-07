@@ -7,7 +7,7 @@ use App\Models\Admin;
 use App\Models\Learner;
 use App\Models\Tutor;
 
-class Login extends Controller
+class Auth extends Controller
 
 {
     private $validationRules = [
@@ -15,63 +15,51 @@ class Login extends Controller
         'password' => ['label' => 'password', 'rules' => 'required|min_length[5]']
     ];
 
-    public function check_session(){
-        if (isset(session()->get('user_data')['admin_login']))
-            $this->response->redirect(base_url() . '/admin/dashboard'); 
-        if (isset(session()->get('user_data')['teacher_login']))
-            $this->response->redirect(base_url() . '/teacher/dashboard'); 
-        if (isset(session()->get('user_data')['student_login']))
-            $this->response->redirect(base_url() . '/student/dashboard'); 
-        else 
-            $this->response->redirect(base_url() . '/backend');
-    }
-  
+    public function index (){
+        // all account logins
+        $page_data['page_title'] = 'BroadWay | Login';
+        $page_data['system_name'] = 'BroadWay SMS';
 
-    public function check_admin_validity(){
-        $model = new Admin();
-        $email = $this->request->getPost('email');
-        $response = $model->get_data($email);
 
-        if($response == null){
-            return 0;
-        }
-        return $response['password'] ==  $this->request->getPost('password') ? $response : 0;
+        if( $this->validator == null)
+            $page_data['errors'] = '';
+        else
+            $page_data['errors'] = $this->validator->getErrors();
 
-    }
-    public function check_student_validity(){
-        $model = new Learner();
-        $email = $this->request->getPost('email');
-        $response = $model->get_data($email);
-        
-         if($response == null){
-            return 0;
-        }
-        if ($response['password'] == 'default_pass'){
-            session()->set('user_data', ['first_login' => 1]);
-        }
-        return 'default_pass' ==  $this->request->getPost('password') ?  $response : 0;
+        return view('pages/login', $page_data);
 
     }
 
-    public function check_teacher_validity(){
-        $model = new Tutor();
-        $email = $this->request->getPost('email');
-        $response = $model->get_data($email);
-        
-         if($response == null){
-            return 0;
+    public function login_validate (){
+        helper('auth');
+        // all account logins
+        if ($this->request->getMethod() == 'post' &&  $this->validate($this->validationRules)){
+            
+            $student = check_student_validity($this->request);
+            $teacher = check_teacher_validity($this->request);
+            $admin = check_admin_validity($this->request);
+
+
+            if($student['code'] === 1 || $teacher['code'] === 1 || $admin['code'] === 1){
+                if(!empty($student['login_type'])){
+                    return redirect()->to(base_url().'/'.$student['login_type'].'/dashboard');
+                }
+                if(!empty($teacher['login_type'])){
+                    return redirect()->to(base_url().'/'.$teacher['login_type'].'/dashboard');
+                } 
+                if(!empty($admin['login_type'])){
+                    return redirect()->to(base_url().'/'.$admin['login_type'].'/dashboard');
+                }
+            }
+            else{
+                // redirect to login page
+                return redirect()->to(base_url('/login'))->with('fail', 'Invalid Email or Password!');
+            }
         }
-        if ($response['password'] == 'default_pass'){
-            session()->set('user_data', ['first_login' => 1]);
-        }
-        return 'teacher' ==  $this->request->getPost('password') ?  $response : 0;
+        return redirect()->to(base_url('/login'))->with('fail', 'Invalid Email or Password!');
 
     }
 
-    public  function index()
-    {
-        $this->check_session();
-    }
 
     public function admin(){
         $data['page_title'] = 'BroadWay | Login';
@@ -174,7 +162,6 @@ class Login extends Controller
         session()->remove('user_data');
 
         return $this->response->redirect(base_url().'/login');
-
 
     }
 
