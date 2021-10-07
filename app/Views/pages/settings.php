@@ -36,6 +36,8 @@
         </div>
         <div class="col-lg-8">
             <form class="col" action="<?=base_url('/create/update_credentials') ?>" method='post'>
+
+               <?= csrf_field() ?>
                 <div class="card  mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h6 class="text-primary fw-bold m-0">System Infomation</h6>
