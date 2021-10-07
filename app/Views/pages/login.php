@@ -1,32 +1,58 @@
+<?php helper('emojis') ?>
+
 <!-- load form helper   -->
 <?php include(APPPATH.'Views/templates/header-common.php'); ?>
-
-<body class="bg-transparent">
+<style>
+    body{
+        background: #eee;
+        position: relative;
+    }
+    .v-shape{
+        top: 10%;
+        height: 60vh;
+        left: 10%;
+        position: absolute;
+        object-fit: cover;
+        animation: wrongTurn 5s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        
+    }
+    @keyframes wrongTurn {
+        0%{
+            transform: rotate(0deg);
+        }
+        50%{
+            transform: rotate(10deg);
+        }
+        100%{
+            transform: rotate(0deg);
+        }
+    }
+</style>
+<body>
+    <img class="v-shape" src="<?=base_url('assets/svgs/travel.svg')?>">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="card shadow-lg o-hidden border-0 my-2" style="max-width: 380px">
+            <div class="card shadow-sm o-hidden border-0 ml-5 my-5" style="max-width: 350px; margin-left: 300px;">
                 <div class="card-body p-0" >
                     <div class="row">
                          <div class="col">
                             <div class="px-4 my-5">
                                 <?php 
-                                    if ($login_type == 'student'){
-                                        echo "<div class='my-3 alert alert-info  small'>To Access the system for the first time, use your <u>Parent Email or admission No as Username</u> and <u>admission Number as your password</u> for your account </div>";
-                                    }
-                                    if($login_type == 'teacher'){
-                                        echo "<div class='my-3 alert alert-info  small'>To Access the system for the first time, use your <u> Email </u> and <u> `teacher` as your password</u> for your account </div>";
-                                    }
+                                  
 
                                     if (!empty(session()->getFlashData('fail'))){
-                                        echo "<div class='my-3 alert alert-danger  small'>Trying to access  restricted resource</div>";
+                                        echo "<div class='my-3 alert alert-danger alert-sm  small'>".session()->getFlashData('fail')."</div>";
                                     }
                                     
                                 ?>
                                 <div class="text-left">
-                                    <div class="text-dark mb-4" style="font-size: 23px">Ahoy Back  ◘</div>
+                                    <div class="text-dark mb-1" style="font-size: 23px">Ahoy Back</div>
+                                    <small class="text-dark mb-4">A place where secrets are revealed<?=render_emoji('happy') ?> 🤣🤣🤣🐱‍💻</small>
+                                    <div class="mb-3"></div>
+
                                     <?php if ($errors) echo "<div class='my-3 text-danger small'>Please Enter Correct Email or Password</div>" ?>
                                 </div>
-                                <form class="user" method='post', action='/login/<?php echo $login_type; ?>'>
+                                <form class="user" method='post' action='/auth/login_validate'>
                                     <?= csrf_field() ?>
                                     <div class="mb-3 form-group">
                                         <label for="emailId" class="mb-1 text-dark">Email ID</label>
