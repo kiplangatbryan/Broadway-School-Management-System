@@ -22,6 +22,7 @@ class Filters extends BaseConfig
 		'AdminCheck' => \App\Filters\AdminCheck::class,
 		'StudentCheck' => \App\Filters\StudentCheck::class,
 		'TeacherCheck' => \App\Filters\TeacherCheck::class,
+		'AuthCheck' => \App\Filters\AuthCheck::class,
 	];
 
 	/**
@@ -33,7 +34,7 @@ class Filters extends BaseConfig
 	public $globals = [
 		'before' => [
 			// 'honeypot',
-			// 'csrf',
+			'csrf',
 		],
 		'after'  => [
 			'toolbar',
