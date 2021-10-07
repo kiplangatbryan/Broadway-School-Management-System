@@ -1,7 +1,7 @@
 
 <body id="page-top">
     <div id="wrapper">
-        <nav class="navbar navbar-dark align-items-start sidebar  sidebar-dark accordion bg-gradient-<?=$skin_color ?> p-0">
+        <nav class="navbar  navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-<?=$skin_color ?> p-0">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
                     <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
                     <div class="sidebar-brand-text mx-3"><span><?=$system_name ?></span></div>
@@ -54,7 +54,7 @@
                     <li class="nav-item"><a class="nav-link <?php if($path === 'admin/fee_structure') echo 'active' ?>" href="/admin/fee_structure"><i class="fas fa-dollar-sign"></i><span>&nbsp; &nbsp;Fee Structure</span></a></li>
                     <li class="nav-item"><a class="nav-link <?php if($path === 'admin/profile') echo 'active' ?>" href="/admin/profile"><i class="fas fa-wheelchair"></i><span>&nbsp; Account</span></a></li>
                     <li class="nav-item"><a class="nav-link <?php if($path === 'admin/settings') echo 'active' ?>" href="/admin/settings"><i class="fas fa-cog"></i><span>&nbsp; Settings</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login/deauth"><i class="fa fa-sign-out"></i><span>&nbsp;Log out</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/auth/deauth"><i class="fa fa-sign-out"></i><span>&nbsp;Log out</span></a></li>
 
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -78,16 +78,20 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="me-3">
-                                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 12, 2019</span>
-                                                <p>A new monthly report is ready to download!</p>
-                                            </div>
-                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter" id="alerts-count"></span><i class="fas fa-bell fa-fw"></i></a>
+                                    <div  class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+                                        <h6 class="dropdown-header">alerts center</h6>
+                                        <div id="alerts-container">
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                                <div class="me-3">
+                                                    <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
+                                                </div>
+                                                <div>
+                                                    <span class="small text-gray-500">December 12, 2019</span>
+                                                    <p>A new monthly report is ready to download!</p>
+                                                </div>
+                                            </a>
+                                            <a class="dropdown-item d-flex align-items-center" href="#">
                                             <div class="me-3">
                                                 <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
                                             </div>
@@ -101,14 +105,17 @@
                                             <div><span class="small text-gray-500">December 2, 2019</span>
                                                 <p>Spending Alert: We've noticed unusually high spending for your account.</p>
                                             </div>
-                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                        </a><a class="dropdown-item text-center small text-gray-500" id="showAlerts" href="#">Show All Alerts</a>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
                             <li class="nav-item dropdown no-arrow mx-1">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-primary badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-primary badge-counter" id="message-count"></span><i class="fas fa-envelope fa-fw"></i></a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                                        <h6 class="dropdown-header">Messages center</h6><a class="dropdown-item d-flex align-items-center" href="#">
+                                        <h6 class="dropdown-header">Messages center</h6>
+                                        <div id="message-container">
+                                        <a class="dropdown-item d-flex align-items-center" href="#">
                                             <div class="dropdown-list-image me-3"><img class="rounded-circle" src="<?php echo base_url(); ?>/assets/img/avatars/avatar4.jpeg">
                                                 <div class="bg-success status-indicator"></div>
                                             </div>
@@ -141,6 +148,7 @@
                                                 <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
                                             </div>
                                         </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
