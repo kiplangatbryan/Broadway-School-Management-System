@@ -12,8 +12,8 @@ class AdminCheck implements FilterInterface
     {
         // Do something here
         $response = \Config\Services::response();
-        if (!isset(session()->get('user_data')['admin_login']))
-            return redirect()->to('/login/admin')->with('fail', 'You must be  loggedIn!');  
+        if (!empty(session()->get('user_data')) && session()->get('user_data')['login_type'] !== 'admin')
+            return redirect()->to('/login')->with('fail', 'Restricted resource, You must be  loggedIn!');  
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
