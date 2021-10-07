@@ -7,6 +7,8 @@
     
     use Hidehalo\Nanoid\Client;
     use Hidehalo\Nanoid\GeneratorInterface;
+    use CodeIgniter\I18n\Time;
+
 
     function assignmentID(){
         // check if an id is present else generate a new one
@@ -65,6 +67,14 @@
             'Sartuday', 
             'Sunday'
         ];
+    }
+
+
+    function display_date($datetime){
+    
+        $myTime = Time::parse($datetime, 'America/Chicago', 'en_US');
+
+        echo $myTime->toLocalizedString('MMM d, yyyy'); 
     }
 
 
