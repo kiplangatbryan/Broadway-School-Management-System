@@ -9,10 +9,10 @@ class Learner extends Model
     // ...
     protected $table      = 'students';
 
-    protected $protectedFields = ['password', 'authentication_key'];
+    protected $protectedFields = ['authentication_key'];
     protected $returnType     = 'array';
 
-    protected $allowedFields = ['student_id','name','birthday','sex','religion','blood_group','address', 'parent_phone','parent_email','address', 'parent_phone','parent_email','father_name','mother_name','class_id', 'role', 'profileUrl'];
+    protected $allowedFields = ['student_id','name','password', 'birthday','sex','religion','blood_group','address', 'parent_phone','parent_email','address', 'parent_phone','parent_email','father_name','mother_name','class_id', 'role', 'profileUrl'];
 
     protected $validationRules    = [];
     protected $validationMessages = [];

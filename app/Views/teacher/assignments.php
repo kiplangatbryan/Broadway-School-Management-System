@@ -1,6 +1,6 @@
 <?php include(APPPATH.'Views/templates/header-common.php'); ?>
 <?php include(APPPATH.'Views/templates/teacher_nav.php'); ?>
-
+<?php helper('general') ?>
 
 <div class="container-fluid">
     <div class="d-sm-flex justify-content-between align-items-center mb-4">
@@ -73,10 +73,10 @@
                                                 <?= $row['class_id'] ?>
                                             </h6>
                                             <div class="actions">
-                                                <a href="" class="btn btn-lg">
+                                                <a href="" class="btn btn-md">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
-                                                <a href="" class="btn btn-lg">
+                                                <a href="" class="btn btn-md">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </div>
@@ -84,9 +84,13 @@
                                         
                                         <div class="card-body">
                                             <small class="text-grey text-sm mt-3">
-                                                <?=$row['created_at'] ?>
+                                                <?=display_date($row['created_at']) ?>
                                             </small>
-                                            <div class="mr-2"><span class="text-info"> <?=$row['due_date'] ?></span></div>
+                                            <div class="mr-2">
+                                                <span class="text-info">
+                                                    <?=display_date($row['due_date']) ?>
+                                                </span>
+                                            </div>
                                             <h5 class="py-1 mb-0 fw-bold ">
                                                 <?=$row['title'] ?>
                                             </h5>

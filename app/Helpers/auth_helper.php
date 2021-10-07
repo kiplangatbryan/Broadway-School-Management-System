@@ -26,9 +26,11 @@
         $email = $req->getPost('email');
         $response = $model->get_data($email);
         
-         if($response == null){
+
+        if($response == null){
             return ['code' => 0];
         }
+
 
         if($response['password'] !=  $req->getPost('password')){
             return ['code' => 0];
