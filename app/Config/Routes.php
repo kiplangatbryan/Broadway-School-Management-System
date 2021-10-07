@@ -33,13 +33,10 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/login', 'login::index');
+$routes->group('', ['filter'=>'AuthCheck'], function($routes){
+	$routes->get('/login', 'auth::index');
+});
 
-$routes->get('/', function() {
-	if (empty(session()->get('user_data'))){
-		return redirect()->to('/backend')->with('fail', 'You have to loggedIn!');
-	}
-});	
 $routes->group('/admin', ['filter'=>'AdminCheck'], function($routes){
 	$routes->get('dashboard', 'admin::dashboard');
 	$routes->get('(:segment)', 'admin::view/$1');
