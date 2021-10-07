@@ -20,6 +20,7 @@ $(function () {
             if (statusText === 'success') {
                 // sanitize for the calender
                 $("span#message-count").text(response.length)
+                console.log(response.length)
                 response.forEach(el => {
                   
                      var data = (`<a class="dropdown-item d-flex align-items-center" href="#">
@@ -32,6 +33,7 @@ $(function () {
                                     </div>
                                 </a>`);
                     $messageNode.append(data);
+                  
                 })
 
             }
@@ -72,6 +74,8 @@ $(function () {
                                 </a>`);
 
                     $alertsNode.append(data);
+                    var show_more_btn = $('<a class="dropdown-item text-center small text-gray-500" id="showAlerts" href="#">Show All Alerts</a>')
+                    $alertsNode.append(show_more_btn)
                 })
             }
         }
