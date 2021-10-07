@@ -1,10 +1,10 @@
 <?php
 
 $emojis = [
-    'happy' => 😃, 
-    'sad' => 😢,
-    'clap' => 👏👏,
-    'tick' => ✔,
+    'happy' => '😃', 
+    'sad' => '😢',
+    'clap' => '👏👏',
+    'tick' => '✔',
 ];
 
 function render_emoji($key){
