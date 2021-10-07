@@ -47,11 +47,10 @@
                                 <div class="col">
                                     <div class="mb-3"><label class="form-label" for="class_opt"><strong>class</strong></label>
                                         <select name='class_id' id="class_opt" class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                                            <option selected>default</option>
-                                            <option value="1">Form 1</option>
-                                            <option value="2">Form 2</option>
-                                            <option value="3">Form 3</option>
-                                            <option value="4">Form 4</option> 
+                                            <option selected>select</option>
+                                            <?php foreach($classes as $row) : ?>
+                                            <option value="<?=$row['class_id'] ?>"> <?= $row['name'] ?></option>
+                                            <?php endforeach ?>
                                         </select>
                                     </div>
                                 </div>
@@ -60,7 +59,7 @@
                                 <div class="col">
                                     <div class="mb-3"><label class="form-label" for="sex"><strong>Select gender</strong></label>
                                         <select name='sex' class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                                            <option selected>default</option>
+                                            <option selected>select</option>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
                                             
@@ -72,7 +71,7 @@
                                         <label class="form-label" for="email"><strong>Blood Group</strong></label>
                                     
                                         <select name='blood_group' class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                                            <option selected>default</option>
+                                            <option selected>select</option>
                                             <option value="B">A</option>
                                             <option value="B">B</option>
                                             <option value="O">O</option>
@@ -88,7 +87,7 @@
                                 <div class="col">
                                     <div class="mb-3"><label class="form-label" for="religion"><strong>Religion</strong></label>
                                         <select name='religion' class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                                            <option selected>default</oiption>
+                                            <option selected>select</oiption>
                                             <option value="christan">christan</option>
                                             <option value="muslim">Muslim</option>
                                             <option value="budhist">Budhist</option>
