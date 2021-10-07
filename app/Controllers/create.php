@@ -7,6 +7,7 @@ use App\Models\Subject;
 use App\Models\Tutor;
 use App\Models\Notice;
 use App\Models\Settings;
+use App\Models\Classes;
 
 
 use Hidehalo\Nanoid\Client;
@@ -117,6 +118,10 @@ class Create extends Controller
 
         }
 
+        $class_model = new Classes();
+
+        $page_data['classes'] = $class_model->get_classes();
+
         if( $this->validator == null)
             $page_data['errors'] = '';
         else
@@ -193,11 +198,7 @@ class Create extends Controller
             $page_data['errors'] = '';
         else
             $page_data['errors'] = $this->validator->getErrors();
-
-
-
         return view('/pages/create_teacher', $page_data);
-
     }
 
     public function subject(){
@@ -210,8 +211,6 @@ class Create extends Controller
         }
     }
 
-
-
     public function notice(){
         // validation
         // save
@@ -223,6 +222,7 @@ class Create extends Controller
             $this->response->redirect(base_url().'/admin/notices');
         }
     }
+
     public function update_credentials(){
         // take the request
         $settings_model = new Settings();
