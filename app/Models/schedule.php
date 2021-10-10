@@ -13,7 +13,7 @@ class Schedule extends Model
     protected $primaryKey     = 'schedule_id';
 
 
-    protected $allowedFields = ['schedule_id','start','end','teacher_id', 'class_id', 'subject_id', 'day'];
+    protected $allowedFields = ['schedule_id','start','end','teacher_id','stream', 'class_id', 'subject_id', 'day'];
 
     protected $validationRules    = [];
     protected $validationMessages = [];
@@ -25,6 +25,7 @@ class Schedule extends Model
     public function fetch_schedules(){
          return $this->findAll();
      }
+
  
 
 }

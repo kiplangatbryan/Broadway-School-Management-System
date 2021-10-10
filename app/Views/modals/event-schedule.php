@@ -8,6 +8,7 @@
             </button>
             <div class="modal-body">
                 <form class="px-sm-4 py-sm-4" id="addSchedule">
+                    <?= csrf_field() ?>
                     <h3>Create New Schedule</h3>
                     
                     <div class="row">

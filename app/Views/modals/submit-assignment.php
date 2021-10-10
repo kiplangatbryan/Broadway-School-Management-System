@@ -10,6 +10,7 @@
             </button>
             <div class="modal-body">
                 <form class="px-sm-4 py-sm-4" id="assign-submit" enctype="mutlipart/form-data">
+                    <?= csrf_field() ?>
                     <h3 class="mb-3">Push Assignment</h3>
                     
                     <div class="row">

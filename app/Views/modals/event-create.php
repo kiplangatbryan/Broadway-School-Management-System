@@ -8,6 +8,7 @@
             </button>
             <div class="modal-body">
                 <form class="px-sm-4 py-sm-4" id="createEvent">
+                        <?= csrf_field() ?>
                     <h3>Create New Event</h3>
                     
                     <div class="row">
@@ -52,7 +53,7 @@
                 </form>
             </div>
 
-
+            happy
         </div>
     </div>
 </div>

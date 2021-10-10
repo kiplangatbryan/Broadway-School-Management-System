@@ -8,6 +8,7 @@ use App\Models\Tutor;
 use App\Models\Notice;
 use App\Models\Settings;
 use App\Models\Classes;
+use App\Models\Schedule;
 
 
 use Hidehalo\Nanoid\Client;
@@ -216,11 +217,23 @@ class Create extends Controller
         // save
         if($this->request->getMethod() == 'post'){
             $notice_model = new Notice();
-
             $notice_model->save($this->request->getPost());
-
             $this->response->redirect(base_url().'/admin/notices');
         }
+    }
+
+    public function schedule(){
+
+        // accept post requets
+        if ($this->request->getMethod() == 'post'){
+            // validate data
+            $scheduler = new Schedule();
+            $scheduler->save($this->request->getPost());
+
+            return redirect()->to('admin/classes')->with('success', 'Class Schedule added successfully!');
+        
+        }
+        return redirect()->back();
     }
 
     public function update_credentials(){
