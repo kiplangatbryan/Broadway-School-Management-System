@@ -11,7 +11,7 @@ class StudentCheck implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         // Do something here
-        if (!empty(session()->get('user_data')) && session()->get('user_data')['login_type'] != 'student')
+        if (empty(session()->get('user_data')) || session()->get('user_data')['login_type'] != 'student')
             return redirect()->to('/login')->with('fail', 'Restricted resource!, login and proceed'); 
     }
 

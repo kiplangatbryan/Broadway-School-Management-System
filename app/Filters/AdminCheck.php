@@ -12,7 +12,7 @@ class AdminCheck implements FilterInterface
     {
         // Do something here
         $response = \Config\Services::response();
-        if (!empty(session()->get('user_data')) && session()->get('user_data')['login_type'] !== 'admin')
+        if (empty(session()->get('user_data')) || session()->get('user_data')['login_type'] !== 'admin')
             return redirect()->to('/login')->with('fail', 'Restricted resource, You must be  loggedIn!');  
     }
 
