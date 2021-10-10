@@ -8,6 +8,7 @@
                 </button>
                 <div class="modal-body">
                     <form class="px-sm-4 py-sm-4" method="post" action="<?=base_url('create/schedule');?>">
+                        <?= csrf_field() ?>
                         <h3>Add class schedule</h3>
                        
                         <div class="row">
@@ -29,22 +30,6 @@
                                 </div>
                             </div>
                             <div class="row">
-                                
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="subject">
-                                            <strong>Subject</strong><br>
-                                            <small>select subject</small>
-                                        </label>
-                                        <select name='subject_id' id="subject_opt" class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                                            <option selected>Select</option>
-                                            <?php foreach($subjects as $row): ?> 
-                                                <option value="<?=$row['subject_id'] ?>"><?=$row['name'] ?></option>
-                                            <?php endforeach ?>
-                                
-                                        </select>
-                                    </div>
-                                </div>
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="form-label" for="class">
@@ -55,6 +40,40 @@
                                             <option selected>Select</option>
                                             <?php foreach($classes as $row): ?> 
                                                 <option value="<?=$row['class_id'] ?>"><?=$row['name'] ?></option>
+                                            <?php endforeach ?>
+                                
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="stream">
+                                            <strong>Section | Stream</strong><br>
+                                            <small>select stream</small>
+                                        </label>
+                                        <select name='stream' id="stream_opt" class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+                                            <option selected>Select</option>
+                                            <?php foreach($streams as $row): ?> 
+                                                <option value="<?=$row ?>"><?=$row ?></option>
+                                            <?php endforeach ?>
+                                
+                                        </select>
+                                    </div>
+                                </div>
+                               
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="subject">
+                                            <strong>Subject</strong><br>
+                                            <small>select subject</small>
+                                        </label>
+                                        <select name='subject_id' id="subject_opt" class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+                                            <option selected>Select</option>
+                                            <?php foreach($subjects as $row): ?> 
+                                                <option value="<?=$row['subject_id'] ?>"><?=$row['name'] ?></option>
                                             <?php endforeach ?>
                                 
                                         </select>
@@ -101,7 +120,7 @@
                         </div>
                        
 
-                        <button type="submit" class="btn btn-cstm-danger btn-cta btn-block" data-dismiss="modal" aria-label="Close">Finish</button>
+                        <button type="submit" class="btn btn-cstm-danger btn-md btn-cta btn-block" data-dismiss="modal" aria-label="Close">Add Class</button>
                     </form>
                 </div>
             </div>

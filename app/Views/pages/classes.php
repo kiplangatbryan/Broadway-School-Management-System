@@ -26,7 +26,9 @@
         <!-- add class modal -->
         <?php include(APPPATH.'Views/modals/add-class.php'); ?>
 
-            
+        <!-- confirm modal -->
+        <?php include(APPPATH.'Views/modals/class-confirm.php'); ?>
+    
         <div class="row">
             <div class="col mb-4">
 
@@ -69,8 +71,13 @@
                                                 <td><?php echo $row['t_email'] ?></td>
 
                                                 <td>
-                                                    <a class="btn btn-warning btn-sm d-block"  role="button" href="<?php echo base_url().'/admin/student/profile/'.$row["subject_id"] ?>">
-                                                        <i class="fas fa-eye fa-sm text-white-50"></i>&nbsp; &nbsp;View
+                                                 
+                                                    <a class="btn btn-outline-primary btn-sm"  role="button" data-classviewid="<?=$row['schedule_id'] ?>" hsref="#">
+                                                        <i class="fas fa-edit fa-sm text-dark"></i>
+                                                    </a>
+
+                                                     <a class="btn btn-danger btn-sm"  role="button" href="#" data-classdelid="<?=$row['schedule_id'] ?>">
+                                                        <i class="fas fa-trash fa-sm text-dark"></i>
                                                     </a>
                                                 </td>
 
