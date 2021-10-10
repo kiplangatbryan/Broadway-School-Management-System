@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <div class="modal-body">
-                    <form class="px-sm-4 py-sm-4" method="post" action="<?=base_url('create/schedule');?>">
+                    <form class="px-sm-4 py-sm-4" id="classForm" method="post" action="<?=base_url('create/schedule');?>">
                         <h3>Add class schedule</h3>
                        
                         <div class="row">
