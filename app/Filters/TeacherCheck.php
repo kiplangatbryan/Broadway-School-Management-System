@@ -13,7 +13,6 @@ class TeacherCheck implements FilterInterface
         // Do something here
         if(empty(session()->get('user_data')) || session()->get('user_data')['login_type'] !== 'teacher'){
             return redirect()->to('/login')->with('fail', 'Restricted resource, You have to loggedIn!'); 
-
         }
     }
 
