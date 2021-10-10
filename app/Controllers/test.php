@@ -4,6 +4,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use Hidehalo\Nanoid\Client;
 use Hidehalo\Nanoid\GeneratorInterface;
+use CodeIgniter\I18n\Time;
 
 use App\Models\Learner;
 
@@ -26,5 +27,13 @@ class Test extends Controller
             $page_data['pager'] = $student_model->pager->links();
         return $this->response->setJSON($page_data);
     }
+
+    public function display_date(){
+        $tz = Time::now()->getTimezone();
+        print_r($tz);
+    }
+
+
+
  
 }
