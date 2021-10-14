@@ -25,3 +25,5 @@ create a file for it plus logic
 <!-- implement alerts -->
 
 <!-- effective error handling -->
+
+<!-- server send events -->

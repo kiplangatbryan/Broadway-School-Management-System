@@ -28,6 +28,9 @@
 
         <!-- confirm modal -->
         <?php include(APPPATH.'Views/modals/class-confirm.php'); ?>
+
+        <!-- edit class modal -->
+        <?php include(APPPATH.'Views/modals/edit-class.php'); ?>
     
         <div class="row">
             <div class="col mb-4">

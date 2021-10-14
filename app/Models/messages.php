@@ -26,11 +26,15 @@ class Messages extends Model
 
     protected $DBGroup = 'default';
 
-    public function get_messages(){
-        return $this->findAll();
+    public function get_messages($key, $value){
+        return $this->findAll()->where($key, $value);
     }
      public function get_unread(){
         return $this->where('destination', session()->get('user_data')['hash'])->where('read', 0)->findAll();
+    }
+
+    public function get_thread($origin, $destination){
+        $this->select('SELECT  * FROM messages');
     }
 }
 

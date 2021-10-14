@@ -20,6 +20,22 @@ class Test extends Controller
         return $nanoID;
     }
 
+    public function event_flush(){
+        header('Content-Type', 'text/event-stream');
+        header('Cache-Control','no-cache');
+
+
+        while (ob_get_level() > 0){
+            ob_end_flush();
+        }
+
+        ini_set()
+
+
+
+
+    }
+
      public function test_env(){
         $student_model = new Learner();
 

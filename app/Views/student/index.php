@@ -160,7 +160,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <?php foreach($notices as $row): ?>
+                    <?php foreach($notices as $i =>  $row): ?>
                         <div class="col">
                             <div class="text-dark fw-bold">
                                 <?=$row['title'] ?>
@@ -173,7 +173,9 @@
                                 <?=$row['body'] ?> 
                             </div>
                         </div>
-                        <hr>
+                        <?php if (!empty($notices[$i])): ?>
+                            <hr>
+                        <?php endif ?>
                     <?php endforeach ?>
                 </div>
             </div>

@@ -12,9 +12,12 @@ use App\Models\Settings;
 use App\Models\Schedule;
 use App\Models\Alerts;
 use App\Models\Messages;
+use App\Models\AdminModel;
 
 class Admin extends Controller
 {
+
+   
     public function dashboard()
     {  
         $student_model = new Learner();
@@ -95,6 +98,20 @@ class Admin extends Controller
     public function fetch_api($option){
         // fetch alerts, handle alerts
         // return json
+
+        if ($option == 'contacts') {
+            if ($_GET['filter'] == 'default') {
+                // fetch all contacts
+                $teacher_model = new Tutor();
+                $admin_model = new AdminModel();
+            
+                $names1 = $teacher_model->get_teachers();
+                $names2 = $admin_model->get_admins();
+
+                return $this->response->setJSON(array_merge($names1, $names2));
+
+            }
+        }
         if ($option == 'alerts'){
              $data = new Alerts;
         
@@ -102,10 +119,32 @@ class Admin extends Controller
         }
         if($option == 'messages')
         {
-            $data = new Messages();
-
-            return $this->response->setJSON($data->get_unread());
+            $modal = new Messages();
+            if($_GET['filter'] == 'default') {
+                return $this->response->setJSON($modal->get_unread());
+            }
+            if ($_GET['filter'] == 'client') {
+                return $this->response->setJSON($modal->get_thread($_GET['origin'], $_GET['destination']));
+            }
         }
+        if($option == 'schedules'){
+            if (!empty($_GET['_id'])){
+                helper(['general']);
+                $schedule_model = new Schedule();
+                $schedules = $schedule_model->fetch_schedules();    
+
+                $data = array_map('scheduleMap', $schedules);
+
+                $filtered_out = array_filter($data, function($row){
+                    if ($row['schedule_id'] == $_GET['_id']){
+                        return true;
+                    }
+                }); 
+                return $this->response->setJSON($filtered_out);
+            }
+
+        }
+    
 
     }
   

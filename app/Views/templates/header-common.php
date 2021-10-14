@@ -25,6 +25,7 @@
     <script src="<?php echo base_url() ?>/assets/bootstrap/js/bootstrap.min.js"></script>
     <script>
         const base_url = "<?=base_url() ?>"
+        const originHash = "<?=session()->get('user_data')['hash']?>"
     </script>
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/styles.min.css">
 </head>

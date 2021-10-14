@@ -116,7 +116,7 @@
                                         <h6 class="dropdown-header">Messages center</h6>
                                         <div id="message-container">
                                         <a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="<?php echo base_url(); ?>/assets/img/avatars/avatar4.jpeg">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="<?php echo base_url('/assets/img/avatars/avatar4.jpeg'); ?>">
                                                 <div class="bg-success status-indicator"></div>
                                             </div>
                                             <div class="fw-bold">

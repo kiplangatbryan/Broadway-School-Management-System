@@ -16,6 +16,8 @@
         overflow: hidden !important;
     }
 
+  
+
 </style>
 <?php include(APPPATH.'Views/templates/side-nav.php'); ?>
 
@@ -29,46 +31,13 @@
                     <div class="card-header py-2">
                         <p class="text-dark m-0 fw-bold">Messaging</p>
                     </div>
-                    <div class="card-body">
-                        <form class="d-none d-sm-inline-block  me-auto ms-md-1 my-1 my-md-0 w-100 mb-4">
-                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..."><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                    <div class="card-body" style="position: relative">
+                        <form class="d-none d-sm-inline-block  me-auto ms-md-1 my-1 my-md-0 w-100 mb-4" style="position: relative">
+                            <div class="input-group"><input class="bg-light form-control border-0 small" id="contact-search" type="search" placeholder="search for ..."><button class="btn btn-primary btn-sm py-0" type="button"><i class="fas fa-search"></i></button></div>
+                            <div id="search-results" class="shadow-sm border-1"></div>
                         </form>
-                        <div class="contact-box">
 
-                            <a class="dropdown-item d-block d-flex align-items-center w-100 custom-block py-2"  href="#">
-                                <div class="me-3">
-                                    <img class="rounded-circle" src="<?php echo base_url(); ?>/assets/img/avatars/avatar3.jpeg">
-                                    <div class="bg-warning status-indicator"></div>
-                                </div>
-                                <div class="fw-bold">
-                                    <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
-                                    <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
-                                </div>
-                            </a>
-
-                              <a class="dropdown-item d-block d-flex align-items-center w-100 custom-block py-2"  href="#">
-                                <div class="me-3">
-                                    <img class="rounded-circle" src="<?php echo base_url(); ?>/assets/img/avatars/avatar3.jpeg">
-                                    <div class="bg-warning status-indicator"></div>
-                                </div>
-                                <div class="fw-bold">
-                                    <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
-                                    <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
-                                </div>
-                            </a>
-
-                              <a class="dropdown-item d-block d-flex align-items-center w-100 custom-block py-2"  href="#">
-                                <div class="me-3">
-                                    <img class="rounded-circle" src="<?php echo base_url(); ?>/assets/img/avatars/avatar3.jpeg">
-                                    <div class="bg-warning status-indicator"></div>
-                                </div>
-                                <div class="fw-bold">
-                                    <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
-                                    <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
-                                </div>
-                            </a>
-
-
+                        <div id="contact-box" class="contact-box mt-2">
                         </div>
                        
                     </div>
@@ -77,10 +46,18 @@
             <div class="col-md-5 content-box">
                 <div class="card border-radius-0 ">
                     <div class="card-header py-2">
-                        <p class="text-dark m-0 fw-bold">Recent Messages</p>
+                        <p class="text-dark m-0 fw-bold">Threads</p>
                     </div>
                     <div class="card-body">
-                        <div class="contact-box">
+                        <div class="contact-box threads">
+                            <div class="main_thread user">
+                                <div class="thread_content">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
+                            </div>
+                            <div class="main_thread target">
+                                <div class="thread_content">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</div>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>

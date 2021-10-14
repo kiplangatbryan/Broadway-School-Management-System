@@ -7,9 +7,8 @@ use App\Models\Tutor;
 use App\Models\Submissions;
 use App\Models\Assignments;
 use App\Models\Classes;
+use App\Models\Notice;
 use App\Models\Subject;
-
-
 
 
 class Teacher extends Controller
@@ -17,8 +16,12 @@ class Teacher extends Controller
    
     public  function dashboard()
     {   
+        $notice_model =  new Notice();
+
         $student_model = new Tutor();
         $page_data['path'] = $this->request->getPath();
+        $page_data['notices'] = $notice_model->get_notices();
+
 
         return view('teacher/index', $page_data);
     }

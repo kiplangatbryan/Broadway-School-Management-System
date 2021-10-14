@@ -61,6 +61,33 @@ class Create extends Controller
         }
         return 0;
     }
+    public function fee_structure(){
+        if($this->request->getMethod() == 'post'){
+            $file = $this->request->getFile('fee_pdf');
+            $newName = $file->getRandomName();
+            $folder_name = 'FeeStructure';
+            
+            // validate 
+            $clear = $this->validate([
+                'avatar' => 'uploaded[avatar]|max_size[avatar, 1024]|ext_in,jpg,jpeg]'
+            ]);
+
+            if ($file->isValid() && ! $file->hasMoved())
+            {
+                // move the file to public folder
+                $file->move('../public/uploads/'.$folder_name,$newName);
+
+            }
+
+            $settings_model = new Settings();
+
+            // validate the credentials
+            $settings_model->whereIn('id', [1])->set(['fee_pdf' => $newName])->update();
+
+            return redirect()->to('admin/fee_structure')->with('success', 'Credentials Successfully Updated 👏😒🤞🤞🤞�');
+
+        }
+    }
 
     public function createAvatar($type_of_account){
         // handle student file upload

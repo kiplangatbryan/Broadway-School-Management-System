@@ -1,11 +1,12 @@
 <?php include(APPPATH.'Views/templates/header-common.php'); ?>
 
 <?php include(APPPATH.'Views/templates/teacher_nav.php'); ?>
-                
+
+<?php helper('general') ?>
 
 <div class="container-fluid">
 <div class="d-sm-flex justify-content-between align-items-center mb-4">
-    <h3 class="text-dark mb-0">Overview</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+    <h3 class="text-dark mb-0">Dashboard</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
 </div>
 <div class="row">
     <div class="col-md-6 col-xl-3 mb-4">
@@ -13,10 +14,10 @@
             <div class="card-body">
                 <div class="row align-items-center no-gutters">
                     <div class="col me-2">
-                        <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>PENDING ASSINGMENTS</span></div>
+                        <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>ASSINGMENTS POSTED</span></div>
                         <div class="text-dark fw-bold h5 mb-0"><span>0</span></div>
                     </div>
-                    <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
+                    <div class="col-auto"><i class="fas fa-upload fa-2x text-gray-300"></i></div>
                 </div>
             </div>
         </div>
@@ -27,10 +28,10 @@
             <div class="card-body">
                 <div class="row align-items-center no-gutters">
                     <div class="col me-2">
-                        <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>SUBJECTS</span></div>
+                        <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>SUBJECTS TAUGHT</span></div>
                         <div class="text-dark fw-bold h5 mb-0"><span>9</span></div>
                     </div>
-                    <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
+                    <div class="col-auto"><i class="fas fa-chalkboard-teacher fa-2x text-gray-300"></i></div>
                 </div>
             </div>
         </div>
@@ -78,7 +79,7 @@
 
                             <tr>
                                 <th>Date of Birth: </th>
-                                <td><?php echo $_SESSION['user_data']['birthday'] ?></td>
+                                <td><?=display_date($_SESSION['user_data']['birthday']) ?></td>
                             </tr>
                             <tr>
                                 <th>Religion: </th>
@@ -108,7 +109,7 @@
                             <h6 class="text-primary">
                                 Profile Picture
                             </h6>
-                            <img class="rounded-circle mb-3 mt-4" src="<?php echo base_url() ?>/assets/img/dogs/image2.jpeg" width="110" height="110">
+                            <img class="rounded-circle mb-3 mt-4" src="<?php echo base_url() ?>/assets/uploads/teacherAvatar/<?=$_SESSION['user_data']['profileUrl'] ?>" width="110" height="110">
 
                         </div>
                     </div>
@@ -131,18 +132,32 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="col">
-                        <div class="text-grey">
-                            16, May 2017
+                    
+                    <?php for($i=0; $i < count($notices) && $i < 2; $i++): ?>
+                        <div class="col">
+                            <div class="text-dark fw-bold">
+                                <?=$notices[$i]['title'] ?>
+                            </div>
+                            <div class="row justify-content-between align-items-center text-md">
+                                <div class="col-4 text-primary"><?=$notices[$i]['posted_by'] ?></div> 
+                                <div class="col-8 text-grey">
+                                    <small>
+                                        <?=display_date($notices[$i]['created_at']) ?>
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <?=$notices[$i]['body'] ?> 
+                            </div>
                         </div>
-                        <div class="row justify-content-between align-items-center text-md">
-                            <div class="col-4 text-primary">Jeniffer Lopez</div> 
-                            <div class="col-8 text-grey">5 min ago</div>
-                        </div>
-                        <div class="mt-2">
-                            Great student management portal, i could actually pay for it 
-                        </div>
-                    </div>
+                        <?php if ($i < 1): ?>
+                            <hr>
+                        <?php endif ?>
+                    <?php endfor ?>
+                    <?php if( count($notices) > 2): ?>
+                        <a href="/admin/notices" class="btn shadow-lg btn-warning mt-3">Load More</a>
+                    <?php endif ?>
+                    
                 </div>
             </div>
             </div>

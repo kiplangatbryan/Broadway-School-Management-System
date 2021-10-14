@@ -1,10 +1,10 @@
 <?php
-    use App\Models\Admin;
+    use App\Models\AdminModel;
     use App\Models\Learner;
     use App\Models\Tutor;
 
     function check_admin_validity($req){
-        $model = new Admin();
+        $model = new AdminModel();
         $email = $req->getPost('email');
         $response = $model->get_data($email);
 

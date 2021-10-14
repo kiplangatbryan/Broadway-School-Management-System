@@ -4,7 +4,7 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 
-class Admin extends Model
+class AdminModel extends Model
 {
     // ...
     protected $table      = 'admin';
@@ -24,6 +24,9 @@ class Admin extends Model
         return $this->where('email', $email)->first();
      }
 
+   public function get_admins(){
+      return $this->findAll();
+   }
 
       
 
