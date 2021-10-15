@@ -27,3 +27,24 @@ create a file for it plus logic
 <!-- effective error handling -->
 
 <!-- server send events -->
+
+12.10.2021
+
+<!-- create mmessage ui -->
+<!-- create assignment teacher UI -->
+<!-- create assignment submission UI -->
+<!-- fix display for marks and student profile -->
+<!-- fix marks upload logic and UI -->
+
+<!-- class progression logic -->
+
+<!-- finally fallback UI -->
+
+<!-- accounts section -->
+
+
+<!-- generate receipts -->
+
+<!-- accept payments -->
+
+<!-- acknowlege payment -->
