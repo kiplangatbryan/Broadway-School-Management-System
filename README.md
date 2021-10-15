@@ -8,7 +8,7 @@ The user guide corresponding to this version of the framework can be found
 
 ## Setup
 
-Ypu just need a few steps to intergrate the system. Just Enter the school name and some configurations as shown [here](https://broadWay-sms/userguide#setup)
+You just need a few steps to intergrate the system. Just Enter the school name and some configurations as shown [here](https://broadWay-sms/userguide#setup)
 
 PHP version 7.3 or higher is required, with the following extensions installed:
 
@@ -28,3 +28,10 @@ Automatic sms to parents' on school term termination.
 Automatic generation of stats report on school perfomance
 Timetable generation
 Automatic alerts on class start
+
+## Target Features
+
+Language selection
+Subject Edit For Student
+Birthday notification for teachers and students
+Fallback content for empty rows
