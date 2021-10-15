@@ -33,8 +33,13 @@ class Messages extends Model
         return $this->where('destination', session()->get('user_data')['hash'])->where('read', 0)->findAll();
     }
 
-    public function get_thread($origin, $destination){
-        $this->select('SELECT  * FROM messages');
+    public function get_msg_thread($origin, $destination){
+        $db = db_connect();
+        $request = 'SELECT * FROM messages WHERE (origin="'.$origin.'" AND destination="'.$destination.'") OR (origin="'.$destination.'" AND destination="'.$origin.'")';
+        // return $query;
+        $query = $db->query($request);
+        return $query->getResult();
+
     }
 }
 
