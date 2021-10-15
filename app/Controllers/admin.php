@@ -90,7 +90,11 @@ class Admin extends Controller
 
         $page_data['all_classes'] = $page == 'schedule' ? $class_model->get_classes(): "";
 
+        $second_model = new Settings();
+
         $page_data['config'] = $page == 'settings' ? $config_model->get_configurations()[0]: "";
+        $page_data['config_ff'] = $page == 'fee_structure' ? $second_model->get_configurations()[0]: "";
+
 
 
         return view('pages/'.$page, $page_data);
@@ -124,7 +128,7 @@ class Admin extends Controller
                 return $this->response->setJSON($modal->get_unread());
             }
             if ($_GET['filter'] == 'client') {
-                return $this->response->setJSON($modal->get_thread($_GET['origin'], $_GET['destination']));
+                return $this->response->setJSON($modal->get_msg_thread($_GET['origin'], $_GET['destination']));
             }
         }
         if($option == 'schedules'){

@@ -148,3 +148,73 @@ img {
 * {
   font-family: "Trebuchet MS";
 }
+
+.main_thread {
+  display: flex;
+}
+
+.main_thread .thread_content {
+  flex: 0 1 60%;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 5px 8px;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.user {
+  justify-content: flex-start;
+}
+.target {
+  justify-content: flex-end;
+}
+
+.user .thread_content {
+  background-color: #dbbd14;
+  justify-self: start;
+}
+.target .thread_content {
+  background-color: #21c1f18e;
+  color: #fff;
+  justify-self: end;
+}
+
+#search-results {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  max-width: 250px;
+  width: 100%;
+  border: 1px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#search-results .result-item {
+  display: block;
+  padding: 4px 10px;
+  border-bottom: 1px solid #80808050;
+  transition: all 0.5s;
+}
+
+#search-results .result-item .main__text {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+#search-results .result-item .subtitle__text {
+  font-weight: 300;
+  font-size: 13px;
+  font-style: italic;
+}
+
+#search-results .result-item:hover {
+  background: #00000056;
+  cursor: pointer;
+  color: #fff;
+}
+#search-result .result-item:last-child {
+  border: unset;
+}
